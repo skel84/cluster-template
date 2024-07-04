@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  name: argocd
+  url: oci://ghcr.io/argoproj/argo-helm/argo-cd
+  enableOCI: "true"
+  type: helm

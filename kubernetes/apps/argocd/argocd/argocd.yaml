@@ -7,7 +7,7 @@ metadata:
 spec:
   project: home-kubernetes
   source:
-    path: kubernetes/apps/argocd/argocd/chart
+    path: kubernetes/apps/argocd/argocd/app
     repoURL: "https://github.com/ajaykumar4/home-lab-argocd.git"
     targetRevision: "main"
     helm:

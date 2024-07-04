@@ -1,0 +1,34 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+    name: ajaykumar-ie-staging
+    namespace: cert-manager
+spec:
+    secretName: ajaykumar-ie-staging-tls
+    issuerRef:
+        name: letsencrypt-staging
+        kind: ClusterIssuer
+    commonName: ajaykumar.ie
+    dnsNames:
+        - ajaykumar.ie
+        - '*.ajaykumar.ie'
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNYWFEVFlzU2J0Q2MzY0xo
+            RjVva3JYVzlHSVkyYThaYitPUWhCcDNSaVJJCllCcDkrY2FhbUdEdmhoeFJHNHJJ
+            MElnb29va3FkL1pLYjRyNVdLOXB6aU0KLS0tIEYveVNMeTJqUGkyTHg2K3E2WlFo
+            VjJSK2YyOHo0Q3VmYkpBOG1YUVVRYWsK9MV5FWNIPil6HHXlzmGg9WMPbjUst360
+            +M5t1ZGcxlHJaJ8vbkemrq4u4BWE/6VQ3Km8qCDlcs8GG/+HUV3cEA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-07-04T13:09:45Z"
+    mac: ENC[AES256_GCM,data:rjpqFOS5erm5q2S+6SXPu2shLkmMawYIN1hqg/PB1uy3FC9Lms6GkBx6XNVRAflDmeSBMMuhGR8FIu3wU8goimmmAsP+mOjv09R6lML7HpKySYbBkhQscLowIoZWVxUjWoDlfyXIvMcsMBXu1SrfnU4FdPURy9DI86ld3bM7vFg=,iv:ziboVOcM3akJLHXOVPsv4dJEUnJUAMtklaZaah7AY94=,tag:Lhi7PEvqeA/jgpaOHm6sMQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.0

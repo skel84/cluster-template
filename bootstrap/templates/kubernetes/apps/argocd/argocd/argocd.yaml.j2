@@ -7,7 +7,7 @@ metadata:
 spec:
   project: home-kubernetes
   source:
-    path: kubernetes/apps/argocd/argocd/chart
+    path: kubernetes/apps/argocd/argocd/app
     repoURL: "#{ bootstrap_github_address }#"
     targetRevision: "#{ bootstrap_github_branch|default('main', true) }#"
     helm:

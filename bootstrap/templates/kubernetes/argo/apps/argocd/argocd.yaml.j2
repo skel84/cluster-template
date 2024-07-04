@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-apps
+  name: argocd
   namespace: argocd
 spec:
   project: home-kubernetes
@@ -10,6 +10,10 @@ spec:
     path: kubernetes/apps/argocd/argocd
     repoURL: "#{ bootstrap_github_address }#"
     targetRevision: "#{ bootstrap_github_branch|default('main', true) }#"
+    helm:
+      valueFiles:
+        - helm-values.yaml
+        - secrets://helm-values.sops.yaml
   destination:
     name: in-cluster
     namespace: argocd

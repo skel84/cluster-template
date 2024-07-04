@@ -10,8 +10,6 @@ spec:
     repoURL: "#{ bootstrap_github_address }#"
     path: kubernetes/argo/apps
     targetRevision: "#{ bootstrap_github_branch }#"
-    directory:
-      recurse: true
   destination:
     name: in-cluster
     namespace: argocd

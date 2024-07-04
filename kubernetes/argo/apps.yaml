@@ -10,6 +10,8 @@ spec:
     repoURL: "https://github.com/ajaykumar4/home-lab-argocd.git"
     path: kubernetes/apps
     targetRevision: "main"
+    directory:
+      recurse: true
   destination:
     name: in-cluster
     namespace: argocd

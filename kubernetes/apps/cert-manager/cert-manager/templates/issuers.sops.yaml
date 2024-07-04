@@ -1,14 +1,14 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-    name: letsencrypt-production
+    name: letsencrypt-staging
     namespace: cert-manager
 spec:
     acme:
-        server: https://acme-v02.api.letsencrypt.org/directory
+        server: https://acme-staging-v02.api.letsencrypt.org/directory
         email: n.uajaykumar@gmail.com
         privateKeySecretRef:
-            name: letsencrypt-production
+            name: letsencrypt-staging
         solvers:
             - dns01:
                 cloudflare:
@@ -27,14 +27,14 @@ sops:
         - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBIcU9KRE1mMnM2d2M0NWlY
-            clpzdnRHY2VCN2xDKzFWcTJGUGFrZ0x0bVE4Ckt3dmtxcXJtR0RJN1JVZzBQWGNI
-            SnJBcG5iL0VPS0xpYnFGWlNyZDlIVFEKLS0tIEtDWnpKSTlNVXMwRFpXYlRFVEJT
-            RW5zY01NU1V6bE9FYWR5UFlnU0dWUG8K+qBr3MD3xKGjzy+JJUdRkqxXSGiKI0dR
-            tk28ME6tIwPbXnZm49xpfZXrpCEktA2b7XNbGjZwOBMAEYsbHwvWyQ==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBxL0tybzJDcksxaC9DQmZp
+            eHc3Qk83VllHL2VQRXdYQmxpcnBQeWpYL204CmJiaXgwSXpWSFFhVVVZREo5VGFi
+            WkJWOCtZNGtsTWphdlVDNlZXNXB4VTgKLS0tIHV3Vk16VUZsbzVwVFN1ZWQxWkxI
+            c3lsQmJnTVNRTGlPYlpVZGNETVlmM00KZEuFwK9oVxm92fSs/WUkYUIZynNDLekJ
+            nkI8iK6FstLZYBAtFTfFx2+7DEbFjlnyNd+ngpkPQ7e5z9Fe6cj+hw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-04T11:10:05Z"
-    mac: ENC[AES256_GCM,data:C5BSPHv5DrOz7Mv79Gfl06nSSGn9+UeLcUoCpzt8ZaqFN1IqO1hFDROuwFpWrLSMyftOYqkFTPHeIVNBKsLvoKo2YW8r1+Ek324E32tQJfQYDiqCHqi/2svGh7ll/SdiHu5+XdO1P4taXe68C75zo0ULATv6ATNlfvEZUMC+G6s=,iv:KoTN+Qyje80gZcBHh4OCJVJ5/2QMMi1WJlPFIxvhfjg=,tag:84n/uTw+XYUxKsrhSN6xyA==,type:str]
+    lastmodified: "2024-07-04T11:16:35Z"
+    mac: ENC[AES256_GCM,data:1cZ8KN0+jZQh+RT+7WI29TFs1zVTAcFxFWXAVmCffqyDHC10f2oeOvbwVL0DEAFawhf+xbboQLFLKb5Zv8FBOG2a7qExcPqjXOYt2M196XZjxhPizUdIYIswseNTkAbWRAlHUVERjwEYwNs7mVX9fVjgFF2af33JnmWv46i1Xxc=,iv:N5jn+aqII2hMvTt2b6eapv+WZpATQEN4YL81g8xk+6o=,tag:TNIYmbxhhJRG/EWoSsFZoQ==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.0

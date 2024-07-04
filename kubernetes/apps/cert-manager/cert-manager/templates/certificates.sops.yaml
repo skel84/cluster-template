@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-    name: ajaykumar-ie-production
+    name: ajaykumar-ie-staging
     namespace: cert-manager
 spec:
-    secretName: ajaykumar-ie-production-tls
+    secretName: ajaykumar-ie-staging-tls
     issuerRef:
-        name: letsencrypt-production
+        name: letsencrypt-staging
         kind: ClusterIssuer
     commonName: ajaykumar.ie
     dnsNames:
@@ -21,14 +21,14 @@ sops:
         - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBsd29vU0VobmhUd0lqVVk5
-            YkZjTG1pbWN0S0h3VVRNQTdWNHQ1b3hPS0ZnCkM3bjF2SFZxUmVYcTliVmwyYjg2
-            UUlyZXVBRnpmbGw3NVR2cDFuemJ6bFUKLS0tIG5ObmtSN3FCSWVKclZtYXFlY21l
-            eGpHZlQvdG1pYkJkY2xKUVliRU1XenMKUgn73X2VpW/+WiVgR8tGiLk3sDK6rq0I
-            UtDbIgex3/j1PwY3I1ki76xrlf5HZ13owRV4Cs55NOQ68rFtszShiw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBJTHVpa3JxSVFlKzRMTVA1
+            TzUyZC9qUjd3MHQveDl0NEN2Tndod1I3Tnc0CjRQaTlWeTlIOEszYzR3OFdkZGl1
+            d2owbmtGNlM2YnFlSlVUcFlqMG9XR1kKLS0tIGVneUQyMnJsa2IvY0FhSVQvWmpZ
+            Mis5SlN3SVhLVGhvNDRLRUwzcDJySEEKZojitYHPweMgUplvbZYep1G7p3DZmgC3
+            jdoTOJO3FneRVv95J7lEgJqe+yl33jNfAjhzD5vbCltiZVncvCOVqA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-04T11:10:05Z"
-    mac: ENC[AES256_GCM,data:YOZ9RTiCN6AXyKufpQqnc33+b+aVb0C+6GhIwesKcnz/vrwFP0yX8WIucPAGcrpwp1GIWNjGUlI0FafVUg8mElymc4cU1wTF96SlvfD8k27WiW0BvrTEPMAs1iOjf5eYjwVgBU1BQ9u+EkR8N8NHM9Os7+DL8Rjgz117/uXARdY=,iv:MI8EWSnx8UH90VokINwWgAHYDUMNbVa0n4CaUg7zLP8=,tag:aLcIeQGgFFpppgCq8p27KA==,type:str]
+    lastmodified: "2024-07-04T11:16:35Z"
+    mac: ENC[AES256_GCM,data:7UXnnEMmJdg/RxPkAyR6sTSFzk8q6UjqrhOtJxrMTFxVeTzdusPERAT/TMWcNh1jGJ2PoNSE3D8ez9bSVEX00MZeqI9THfDFaYFDWSBAUTZZ7GHnDpNbQCI0Uc5sAl8zQju2KkmMTlcu23KTDqGYi2kO2PWd+kDcUtNTzEpWHnw=,iv:asKwAc4bk1pxu5QzIbw7Vgw9X7+YThqRcquH2ZA7yuo=,tag:AJNZCm9LGRmjmwt3EWYL1Q==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.0

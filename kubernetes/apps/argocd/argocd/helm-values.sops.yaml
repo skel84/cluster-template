@@ -51,7 +51,7 @@ server:
         issuer:
             group: cert-manager.io
             kind: ClusterIssuer
-            name: letsencrypt-production
+            name: letsencrypt-staging
     ingress:
         enabled: true
         ingressClassName: external
@@ -163,14 +163,14 @@ sops:
         - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMTGg3STFETVJMSGxtK3Zn
-            SitSVmVjV3owaU1VRWh5dnV0Q2FLa0RLR1hRClJqMTNOSVEyeC9CU2tQd21JOGJk
-            WlB5dGp5ZFFrWXRmaGNPWnJWU05yWVEKLS0tIFNsODdOTUdLZ0ZzWld4RWxvVkho
-            TEh4eENUV0pjL0pJc1ZNZ3NhTGpzeG8K5tuI9oNJ0kE02FQZoLhXEqXjWcwbLK1O
-            V95j87pfeGs7eCNvICrrEyxp5OGIEDlLQDwRdjF01sqyDeKBN6Y3Zg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBycXlvSU1VdExnSVlmTmdE
+            dml3QTU0LytLZEwyb3dBL3U1bFNxb0w1d21NCnVkNGI4d2pmWGdYVTNtaWVLalZy
+            ZEgzc0FuVm9zRm4zbTkwWVZ0WGgrL0kKLS0tIFRhcWZYVGZjdEdoSTF1c2hNRVBF
+            SzBURlY0SExrdFdWNlBraGYrR2FuaEkKodKim1Ny3WIk8TER4Xl2J/sIzDkMVZYM
+            7vt2ZyUoOcMU3OUSG4rip6rmqIuh1FI5BlSgy1/n1Zuc6hSdaqvD9A==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-04T11:10:05Z"
-    mac: ENC[AES256_GCM,data:6m5yhKPWnDh3+ng6elTxqR/ZfRLz6Y1XsIQGEx2NzhIqzi5mq8EYjbqRMaCCmeXXyrSu/xrhQOIMFmmUd9TdXyab0GTbufKk7bkx/HmZQSsk1ez/KFAyUHkksBtqzoiDDmiJ7q94L2IMbPOs9pbuEq4sWn7v9isD9xjhpWsfuS8=,iv:uBlMAU6qL9qZiMPPM6ZcR7eYz0NQq1JR+f3mC/N6G98=,tag:JUdinKtgipIBLSMavbTM5A==,type:str]
+    lastmodified: "2024-07-04T11:16:35Z"
+    mac: ENC[AES256_GCM,data:+vhZrm4WAD5lwaGfHx7tSTxeAVekFMc6JzoE7Bc9LKdaS9Z75yZTHjsWBOPyU7wmI4DsTXsbK68O8R6+uWo1CebZ+Z01dk3XV/McgK+sNiD6Gic4nsAxpCkFvHnkgqWLDk8mQhY/lnGMQdkT+2GH1vbpDneGG+uTQPHFZUwwSzE=,iv:wpfve0+gDah5M4XqeJNtTvP6QedOuyGa6qs19AWqk/w=,tag:3wxXczMfxlCfIbzgCWv+DQ==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.0

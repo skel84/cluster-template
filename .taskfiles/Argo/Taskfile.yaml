@@ -10,7 +10,9 @@ tasks:
   bootstrap:
     desc: Bootstrap Argo into a Kubernetes cluster
     cmds:
-      - kubectl apply --kubeconfig {{.KUBECONFIG_FILE}} --server-side --kustomize {{.KUBERNETES_DIR}}/bootstrap/flux
+    #   - kubectl apply --kubeconfig {{.KUBECONFIG_FILE}} --server-side --kustomize {{.KUBERNETES_DIR}}/bootstrap/argo -n argocd
+    #   - cat {{.AGE_FILE}} | kubectl --kubeconfig {{.KUBECONFIG_FILE}} -n argocd create secret generic sops-age --from-file=key.txt=/dev/stdin
+      - kubectl apply --kubeconfig {{.KUBECONFIG_FILE}} --server-side --filename {{.KUBERNETES_DIR}}/argo
     preconditions:
       - msg: Missing kubeconfig
         sh: test -f {{.KUBECONFIG_FILE}}

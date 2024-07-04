@@ -7,13 +7,13 @@ metadata:
 spec:
   project: home-kubernetes
   source:
-    path: kubernetes/apps/argocd/argocd/chart
-    repoURL: "#{ bootstrap_github_address }#"
-    targetRevision: "#{ bootstrap_github_branch|default('main', true) }#"
+    chart: argo-cd
+    repoURL: ghcr.io/argoproj/argo-helm
+    targetRevision: 7.3.4
     helm:
       releaseName: argocd
       valueFiles:
-        - secrets+age-import:///sops-age/key.txt?helm-values.sops.yaml
+        - secrets://helm-values.sops.yaml
   destination:
     name: in-cluster
     namespace: argocd

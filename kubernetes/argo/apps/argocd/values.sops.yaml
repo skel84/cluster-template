@@ -1,9 +1,9 @@
 global:
-    domain: ENC[AES256_GCM,data:eCUnpyXdUVVh5KTLCXNWhh1YYg==,iv:1J/m9WF0otiLeLxELUaCyG/3ifZGh4YmMyf7kYSpojo=,tag:cjJV0v+VZNeaYGzO4vyfGw==,type:str]
+    domain: ENC[AES256_GCM,data:DkuXkVALoHQTnghJnUeVY1pjZA==,iv:VA8QYMvTPoGVXjmq4NFqa7g3+K99jXLEP0G2vt+ywoM=,tag:QAWppsxGRmJkTyIHrtM/1Q==,type:str]
 configs:
     secret:
-        argocdServerAdminPassword: ENC[AES256_GCM,data:JWkTLzHxtc4xLsd87rWQWF6Ec7ewUcE8yj6hxSykDe7C9u9dLUlVcPPhfkxQKdrAZRpm29JbaCcletn+,iv:96K1sVm6+bLQrseYblzY309Vq5CdmgExQo+NX1J4rPs=,tag:o7s0E7VxUp5o0lWIlbo0WA==,type:str]
-        githubSecret: ENC[AES256_GCM,data:yS0KscR1Q0YnjBe0URCklV9u6RNlruAAZONFe0WLDAY=,iv:2p229I3IyBFLFwQ2Zvnzwn8AH6P7e3g+rOWB3ZPXYgo=,tag:qsgz+ecCOYa/0Ye7xRNOWQ==,type:str]
+        argocdServerAdminPassword: ENC[AES256_GCM,data:5Pg3IBZSWCEieYmVNYiJf3wWhSJdbvWoaqp+B2l2yer3+LWxytVm8ekEdyP6qs5jxqJc1PmZXifDvqzs,iv:XSFZCVrGsdEOFv8+LteWMrYYzNTvDKpG3mEB5/z7+0k=,tag:1sugakxxmjP2YQ8NLA2G5w==,type:str]
+        githubSecret: ENC[AES256_GCM,data:9V+ttwwlt2GyqVqFt92b1nORo8sed8q5KLolfEPOw/s=,iv:5JrS4uYxcyN/QMgOASLNx1NJMLGXA8B129zFBNDJrZ8=,tag:qgR5Hmbl4sVd7y/XgeGXqg==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -13,14 +13,14 @@ sops:
         - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBtcUF3ZU12ZDdkdVF2S05R
-            NVVub29nTk1TRGgwdFcxOHVwZ1Vwa0dLQUI4Cit0eGxKeFFWd1VwVmsrdXJmelVZ
-            eGtXUE1pK1pSc1ZwSUlqNEpXNHZLN0UKLS0tIEgxMG55L2VOM214Yk1TeHl0S0JH
-            U1ltRHc5QUxxcE9RUnpPSnhUOE85R1EKjawgtDA6JqKAHTXb+Mhpu4qgWktH30JQ
-            wh9KS+8Ulh3CQj3ppSgPdrh5Ft9orQ8dzqgeIXVvLiSTCWU6HGnD7Q==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA1OHpuRElKM2dmZEthTUJH
+            ZEJ6R1RkYVhkdWY0dVlBNklTbFRiUWR4SHlnClE2cmFFN1laWHV3Q3B5ckFSRE5p
+            bnU4NEx3Q1IwWUhCSzYzRDdRMERtM2sKLS0tIHRBbXE5a2ZqL0ExMWRZbUk4T1FF
+            YUZPQVdlTldEMUFCOHN0SUV3Wjdadm8KQISPHFt/uAtvjx7QTBR9QnLYvs14+jri
+            QPe4Hrw2t2wFDNbj18jNVvcE5XAoRAOkKbZKXRLWi+LZFq4XsYN+zA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-04T22:04:41Z"
-    mac: ENC[AES256_GCM,data:ci31ce0Ft3tUvzxISjpUYHqOjSgYomj1PDO5FxVY0McRMzg+VFTU+NFmJPRF3vzbemN0BpZHpr8k2A4KBL6ASj/gTS944/2y/+3iCa52dhiiolwxf+G+m7cw8wkhHf9ffLS/Ow2s74hFi1M6QkTb130M1REoh3t9OAdC0QFllUQ=,iv:xvZHJdfXw3c8Ppw86H3y598Bc+ubVigejr2HtFTm3Gw=,tag:BrODuEOVg7X0KQ/yuPM4mA==,type:str]
+    lastmodified: "2024-07-04T22:08:02Z"
+    mac: ENC[AES256_GCM,data:kJebtbBaAXtrtcSM9QfmItDqr08en9cyjIBsM5BKv0so2DuhinhoW56OawAQnDcb4ii4fk/LM3pCERexjgMPY50z+EinrMDdmkZZ54dccBPF+StGmm5iok/Dh91rEzvOBWDcXpsXq7DazAmqjT/ceNtP88aImulujKxmU1UOGT8=,iv:WstoJXTDCzByHOMaiFXeYz+bkG9tba9lBb7fe8AZn+0=,tag:TevhUTs1U6vD+gKb/taFfw==,type:str]
     pgp: []
     unencrypted_suffix: _unencrypted
     version: 3.9.0

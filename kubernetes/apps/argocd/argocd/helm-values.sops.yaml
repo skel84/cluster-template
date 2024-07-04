@@ -7,6 +7,7 @@ configs:
         server.insecure: true
     cm:
         statusbadge.enabled: true
+        helm.valuesFileSchemes: secrets+gpg-import, secrets+gpg-import-kubernetes, secrets+age-import, secrets+age-import-kubernetes, secrets,secrets+literal, https
         resource.exclusions: |
             - apiGroups:
                 - cilium.io
@@ -42,8 +43,6 @@ redis:
                 release: kube-prometheus-stack
 server:
     allowAnyNamespace: true
-    config:
-        helm.valuesFileSchemes: secrets+gpg-import, secrets+gpg-import-kubernetes, secrets+age-import, secrets+age-import-kubernetes, secrets,secrets+literal, https
     certificate:
         enabled: true
         secretName: argocd-server-tls
@@ -163,14 +162,14 @@ sops:
         - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpY1ZoYkJMK3E1cS8ybVpu
-            NU9xN3hEZDUxRGQ0azNtZG5MaDcyc1dwNmh3Cm04RC9GZ1A1U2xMMGtpL0lUalM3
-            RERMN0V6NEhxR0FPZnNkSHc1czdOSzQKLS0tIFVuZGY2bUN6b1JhcXRmTGtNdjNh
-            S0VzcUkwRXpjYS9sNGJkYnhMcGIrNTQKJPa33iEazFUDLdoC2V8ViteDiSImtYKc
-            f3cvIM0tCcN/7bbJH6CP4P+R1MfZh57pQP6QNN3oRfDLhbGxNXUP3w==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA4MEZWUVNZakJ6WVcvSW1H
+            dG1scHRIbC9YSFNCdldnMnFNTUNvOTdQR0V3CjBaWjd3bGVIaXNDRHQ0VGZ0QkU3
+            QXAvK2dRRHBNU3EzK3hZdWZwV3B2NXMKLS0tIG15TjJxc0k1cWUxY0pYSFY1U1hv
+            SkNjdTRzaXE2SXY4akNhRTkyMzl2RmMKIXmLQDHB09zLovC0rdVpEEbiUAyjEcBh
+            P6ssI7UAR+nARy3igoO8j0FHIAALtW3cnIQ6c+5udQicN/bAycpvrQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-04T12:33:26Z"
-    mac: ENC[AES256_GCM,data:9ciBTPz0OocQtrYRmCP5+b+QEFhY25EHh+nxBKKoMpTGcdZ9kLplXqQYg1cLGQTxNxJewcnTXG+v+cSkqoqdOBW3Asq/NQYiluvecbxyodHvpz6XEjh4IiHNPhQVFF2brvDa1fBezJpQWsr3yJbdKH+e5Dm5793xp4tKYJxNzV8=,iv:Y7Nv24xuHHUYEEGMR8/oZTOhzgbPo7zq2RP0rGyknck=,tag:47BmCzwQOhq7hnfhM6hIXw==,type:str]
+    lastmodified: "2024-07-04T12:40:21Z"
+    mac: ENC[AES256_GCM,data:xiMXwTLWVlOY1rg0t7PdZxfYfu6u8IvScTy3q0mmUVg4rCHX7fhHl/BZfpCVF0mtk9A1q948ljACKk9UrQAvkMTzMkmxe/mt6hcPXomGMtRtYRZ4d4HzwYrQjrKaDhZoUPAIBV9XNbb80Uy0tR54IrDDzO3SVVVeNgzEIorKK/g=,iv:KuuhWatvBA8HxnAEVI/n8vK4hBvHG+wrnDU0iAaW5o4=,tag:f3KZKyHiveqYY8cLbQdAhA==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.0

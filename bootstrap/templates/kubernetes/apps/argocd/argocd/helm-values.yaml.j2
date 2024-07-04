@@ -4,13 +4,13 @@ argo-cd:
   configs:
     params:
       server.insecure: true
+    cm:
+      statusbadge.enabled:
       helm.valuesFileSchemes: >-
         secrets+gpg-import, secrets+gpg-import-kubernetes,
         secrets+age-import, secrets+age-import-kubernetes,
         secrets,secrets+literal,
         https
-    cm:
-      statusbadge.enabled: true
       resource.exclusions: |
         - apiGroups:
             - cilium.io

@@ -10,6 +10,10 @@ spec:
     path: kubernetes/apps/argocd/argocd
     repoURL: "https://github.com/ajaykumar4/home-lab-argocd.git"
     targetRevision: "main"
+    helm:
+      releaseName: argocd
+      valueFiles:
+        - secrets://helm-values.sops.yaml
   destination:
     name: in-cluster
     namespace: argocd

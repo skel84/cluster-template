@@ -12,8 +12,8 @@ spec:
     targetRevision: "#{ bootstrap_github_branch|default('main', true) }#"
     helm:
       valueFiles:
-        - "helm-values.yaml"
-        - "secrets://helm-values.sops.yaml"
+        - helm-values.yaml
+        - secrets://helm-values.sops.yaml
   destination:
     name: in-cluster
     namespace: argocd

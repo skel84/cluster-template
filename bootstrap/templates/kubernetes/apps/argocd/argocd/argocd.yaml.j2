@@ -13,7 +13,7 @@ spec:
     helm:
       releaseName: argocd
       valueFiles:
-        - secrets://secrets.sops.yaml
+        - secrets+age-import::///sops-age/key.txt?helm-values.sops.yaml
   destination:
     name: in-cluster
     namespace: argocd

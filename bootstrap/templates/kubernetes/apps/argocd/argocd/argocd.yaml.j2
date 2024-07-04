@@ -7,9 +7,9 @@ metadata:
 spec:
   project: home-kubernetes
   source:
-    chart: argo-cd
-    repoURL: ghcr.io/argoproj/argo-helm
-    targetRevision: 7.3.4
+    path: kubernetes/apps/argocd/argocd/chart
+    repoURL: "#{ bootstrap_github_address }#"
+    targetRevision: "#{ bootstrap_github_branch|default('main', true) }#"
     helm:
       releaseName: argocd
       valueFiles:

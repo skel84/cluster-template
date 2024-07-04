@@ -7,9 +7,9 @@ metadata:
 spec:
   project: home-kubernetes
   source:
-    chart: argo-cd
-    repoURL: ghcr.io/argoproj/argo-helm
-    targetRevision: 7.3.4
+    path: kubernetes/apps/argocd/argocd/chart
+    repoURL: "https://github.com/ajaykumar4/home-lab-argocd.git"
+    targetRevision: "main"
     helm:
       releaseName: argocd
       valueFiles:

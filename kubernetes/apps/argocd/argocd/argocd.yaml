@@ -13,8 +13,8 @@ spec:
     helm:
       releaseName: argocd
       valueFiles:
-        - values.sops.yaml
-        - values.yaml
+        - ./values.sops.yaml
+        - ./values.yaml
   destination:
     name: in-cluster
     namespace: argocd

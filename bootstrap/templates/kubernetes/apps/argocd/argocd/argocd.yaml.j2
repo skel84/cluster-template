@@ -7,13 +7,13 @@ metadata:
 spec:
   project: home-kubernetes
   source:
-    chart: argo-cd
-    repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: 7.1.5
+    chart: argocd
+    repoURL: oci://ghcr.io/argoproj/argo-helm/argo-cd
+    targetRevision: 7.3.4
     helm:
       releaseName: argocd
       valueFiles:
-        - values.yaml
+        - secrets://helm-values.sops.yaml
   destination:
     name: in-cluster
     namespace: argocd

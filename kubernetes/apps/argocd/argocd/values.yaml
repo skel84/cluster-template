@@ -152,4 +152,23 @@ repoServer:
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
-
+rbacConfig:
+  create: true
+  roles:
+    - name: argocd-secret-manager
+      namespace: argocd
+      rules:
+        - apiGroups: [""]
+          resources: ["secrets"]
+          verbs: ["get", "list", "create", "update", "delete"]
+  roleBindings:
+    - name: argocd-secret-manager-binding
+      namespace: argocd
+      subjects:
+        - kind: ServiceAccount
+          name: default
+          namespace: argocd
+      roleRef:
+        kind: Role
+        name: argocd-secret-manager
+        apiGroup: rbac.authorization.k8s.io

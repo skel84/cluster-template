@@ -18,9 +18,6 @@ configs:
     argocdServerAdminPassword: #{ bootstrap_argocd_admin_password }#
     githubSecret: #{ bootstrap_github_webhook_token }#
 controller:
-  envFrom:
-    - secretRef:
-        name: cluster-secrets
   metrics:
     enabled: true
     applicationLabels:
@@ -30,9 +27,6 @@ controller:
       additionalLabels:
         release: kube-prometheus-stack
 dex:
-  envFrom:
-    - secretRef:
-        name: cluster-secrets
   metrics:
     enabled: true
     serviceMonitor: *service-monitor
@@ -41,9 +35,6 @@ redis:
     enabled: true
     serviceMonitor: *service-monitor
 server:
-  envFrom:
-    - secretRef:
-        name: cluster-secrets
   allowAnyNamespace: true
   config:
     helm.valuesFileSchemes: >-

@@ -1,0 +1,6 @@
+global:
+  domain: "argocd.#{ bootstrap_cloudflare.domain }#"
+configs:
+  secret:
+    argocdServerAdminPassword: #{ bootstrap_argocd_admin_password }#
+    githubSecret: #{ bootstrap_github_webhook_token }#

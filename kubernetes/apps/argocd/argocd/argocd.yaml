@@ -13,7 +13,7 @@ spec:
     helm:
       releaseName: argocd
       valueFiles:
-        - secrets://kubernetes/apps/argocd/argocd/helm-values.sops.yaml
+        - kubernetes/apps/argocd/argocd/helm-values.yaml
   destination:
     name: in-cluster
     namespace: argocd

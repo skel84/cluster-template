@@ -1,5 +1,5 @@
 crds:
-    install: false
+    install: true
 global:
     domain: argocd.ajaykumar.ie
 configs:
@@ -163,14 +163,14 @@ sops:
         - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA4SHpBMWdjMW9HMUJWSlo5
-            Z1ROUVNzNVVaemcwcTlLRTJYTldHeDhRUkdJClVyN3htaFpFaGhDRStiYjZ5cU1z
-            dW8xL2crMjMyam9iekc4dVlhcDJZN0UKLS0tIG5tRXRTMVF4YThmYVVhb2dYUldt
-            ZjFLc0UrbkMxM2xVRWNxNjF2UzJLaFUK6FMn/7Cdq+O+LMs5c09XaeS9gajMZCDK
-            sjTyVjcb/2keQ6QORfjCuHSxOuux6GhKUed7K+JEtOtqOCJxY2Pjrg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDd05KcHlaTmRtSEh0QjNO
+            eVlKeThudWs4VWFoWDJERUZQSjhVU2R0dmh3CkJXOVFSak1Jb1BsaUxXYkg2OUlI
+            Z2hxUUhSNzZnYlQ4cEhydm90Sm1waVUKLS0tIG1Pcm9UTmZKUm8xbk1oMGVTTmJa
+            OVcwRUkxRisreHNHOTg5RHEvazFuYTgKfIQJfzlyKdl4wq5zbaCLc5NsKd+MUHTC
+            8N4IA/c1KWbacFYf++8y6Y69vCZ++1Bbz5ZW8qhU4hcbZBQFyjfapA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-04T11:31:55Z"
-    mac: ENC[AES256_GCM,data:PAbe7mpAH8ToRRRyLpQt6DnuiKw2tonZfhIrSHNqu7BdeIcba6XRkTWXVziMs5OOyQJGnkj8HFDBySblBqekBenQNNuNLSZ7T2CVS9IviC+JWktFhVx8Cu9Xgj8Vb/pcZtER4w86o5JP+2YMIJRQ28uYIrEXKRQVtK/3/LBQbMw=,iv:K4ZTSNCE1EtWSzqHpJg8yXkK4yOB9WBO1cbw6XGADAU=,tag:iV4UgOxQ3Yol7fT/m5uSdw==,type:str]
+    lastmodified: "2024-07-04T11:39:57Z"
+    mac: ENC[AES256_GCM,data:IRJts+uIm+qidEcYQ8KG3ucrVx1N9PRU957PpA4DP6jKcu94kXezCzNnOd0NcMRNDO9UHlnuqh7ID2ilq1tbN0bogK02oWYYPUvemEn25OX2nRzApYKbBTuYU9iLTaAPlmESJ0DdoCkGYfnkb4UQksusM0lP861jtX3OYf6SZOI=,iv:ePwgiJhth5g/dtnDZCKfZxY0xzLOFxuR9EwG4DVsBqk=,tag:xAEF4+7ZRmstBYg86aaSvg==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.0

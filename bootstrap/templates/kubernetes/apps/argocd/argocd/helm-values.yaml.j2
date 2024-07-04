@@ -4,6 +4,11 @@ argo-cd:
   configs:
     params:
       server.insecure: true
+      helm.valuesFileSchemes: >-
+        secrets+gpg-import, secrets+gpg-import-kubernetes,
+        secrets+age-import, secrets+age-import-kubernetes,
+        secrets,secrets+literal,
+        https
     cm:
       statusbadge.enabled: true
       resource.exclusions: |
@@ -32,12 +37,6 @@ argo-cd:
       serviceMonitor: *service-monitor
   server:
     allowAnyNamespace: true
-    config:
-      helm.valuesFileSchemes: >-
-        secrets+gpg-import, secrets+gpg-import-kubernetes,
-        secrets+age-import, secrets+age-import-kubernetes,
-        secrets,secrets+literal,
-        https
     metrics:
       enabled: true
       serviceMonitor: *service-monitor

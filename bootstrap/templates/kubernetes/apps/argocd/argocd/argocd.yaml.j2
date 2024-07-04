@@ -12,6 +12,8 @@ spec:
     targetRevision: 7.3.4
     helm:
       releaseName: argocd
+      valueFiles:
+        - helm-values.yaml
   destination:
     name: in-cluster
     namespace: argocd

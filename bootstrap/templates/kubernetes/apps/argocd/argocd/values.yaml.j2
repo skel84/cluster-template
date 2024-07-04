@@ -1,5 +1,7 @@
 crds:
   install: false
+global:
+  domain: "argocd.${SECRET_DOMAIN}"
 configs:
   params:
     server.insecure: true
@@ -12,7 +14,13 @@ configs:
           - CiliumIdentity
         clusters:
           - "*"
+  secret:
+    argocdServerAdminPassword: "${SECERT_ARGOCD_ADMIN_PASSWORD}"
+    githubSecret: "${GITHUB_WEBHOOK_TOKEN}"
 controller:
+  envFrom:
+    - secretRef:
+        name: cluster-secrets
   metrics:
     enabled: true
     applicationLabels:
@@ -22,6 +30,9 @@ controller:
       additionalLabels:
         release: kube-prometheus-stack
 dex:
+  envFrom:
+    - secretRef:
+        name: cluster-secrets
   metrics:
     enabled: true
     serviceMonitor: *service-monitor
@@ -30,6 +41,9 @@ redis:
     enabled: true
     serviceMonitor: *service-monitor
 server:
+  envFrom:
+    - secretRef:
+        name: cluster-secrets
   allowAnyNamespace: true
   config:
     helm.valuesFileSchemes: >-
@@ -37,6 +51,24 @@ server:
       secrets+age-import, secrets+age-import-kubernetes,
       secrets,secrets+literal,
       https
+  certificate:
+    enabled: true
+    secretName: argocd-server-tls
+    domain:  "argocd.${SECRET_DOMAIN}"
+    issuer:
+      group: cert-manager.io
+      kind: ClusterIssuer
+      #% if bootstrap_cloudflare.acme.production %#
+      name: letsencrypt-production
+      #% else %#
+      name: letsencrypt-staging
+      #% endif %#
+  ingress:
+    enabled: true
+    ingressClassName: external
+    annotations:
+      external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+    hostname: "argocd.${SECRET_DOMAIN}"
   metrics:
     enabled: true
     serviceMonitor: *service-monitor

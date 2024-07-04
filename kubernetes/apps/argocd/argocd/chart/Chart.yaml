@@ -1,7 +1,0 @@
-apiVersion: v2
-name: setup
-version: 1.0.0
-dependencies:
-  - name: argo-cd
-    version: 7.3.4
-    repository: oci://ghcr.io/argoproj/argo-helm

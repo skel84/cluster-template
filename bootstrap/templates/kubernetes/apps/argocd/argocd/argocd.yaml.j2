@@ -13,8 +13,8 @@ spec:
     helm:
       releaseName: argocd
       valueFiles:
+        - secert://values.sops.yaml
         - values.yaml
-        - 'secert://values.sops.yaml'
   destination:
     name: in-cluster
     namespace: argocd

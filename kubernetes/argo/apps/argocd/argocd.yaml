@@ -13,7 +13,7 @@ spec:
     helm:
       valueFiles:
         - helm-values.yaml
-        - secrets://helm-values.sops.yaml
+        - helm-values.sops.yaml
   destination:
     name: in-cluster
     namespace: argocd

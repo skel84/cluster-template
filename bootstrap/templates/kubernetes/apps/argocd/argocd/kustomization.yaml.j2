@@ -3,16 +3,16 @@ kind: Kustomization
 metadata:
   name: argocd
 
+resources:
+  - namespace.yaml
+
 generators:
   - ksops.yaml
 
 helmCharts:
-- name: argo-cd
-  releaseName: argocd
-  version: 7.3.4
-  repo: oci://ghcr.io/argoproj/argo-helm
-  valuesFile: values.sops.yaml
-  includeCRDs: true
-
-resources:
-  - namespace.yaml
+  - name: argo-cd
+    releaseName: argocd
+    version: 7.3.4
+    repo: oci://ghcr.io/argoproj/argo-helm
+    valuesFile: values.sops.yaml
+    includeCRDs: true

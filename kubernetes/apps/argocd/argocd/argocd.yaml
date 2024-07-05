@@ -13,7 +13,7 @@ spec:
     helm:
       releaseName: argocd
       valueFiles:
-        - secrets.sops.yaml
+        - secrets://secrets.sops.yaml
   destination:
     name: in-cluster
     namespace: argocd

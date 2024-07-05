@@ -8,11 +8,20 @@ configs:
     kustomize.buildOptions: "--enable-alpha-plugins --enable-exec"
 
 repoServer:
+    env:
+    - name: XDG_CONFIG_HOME
+      value: /.config
+    - name: SOPS_AGE_KEY_FILE
+      value: /.config/sops/age/keys.txt
+
   # Use init containers to configure custom tooling
   # https://argoproj.github.io/argo-cd/operator-manual/custom_tools/
   volumes:
     - name: custom-tools
       emptyDir: {}
+    - name: sops-age
+      secret:
+        secretName: sops-age
 
   initContainers:
     - name: install-ksops
@@ -33,3 +42,5 @@ repoServer:
     - mountPath: /usr/local/bin/ksops
       name: custom-tools
       subPath: ksops
+    - mountPath: /.config/sops/age
+      name: sops-age

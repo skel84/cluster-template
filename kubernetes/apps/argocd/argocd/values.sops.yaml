@@ -4,6 +4,93 @@ configs:
     secret:
         argocdServerAdminPassword: $2a$10$VS18cczTtbUep4iBCs0FdORY9tWiBZ/ew4m62ciotMBWrWeyC.JNO
         githubSecret: bd77b8ded03b9fdc259013f221d5c244
+configs:
+    params:
+        server.insecure: true
+    cm:
+        statusbadge.enabled: null
+        helm.valuesFileSchemes: secrets+gpg-import, secrets+gpg-import-kubernetes, secrets+age-import, secrets+age-import-kubernetes, secrets,secrets+literal, https
+server:
+    config:
+        helm.valuesFileSchemes: secrets+gpg-import, secrets+gpg-import-kubernetes, secrets+age-import, secrets+age-import-kubernetes, secrets,secrets+literal, https
+repoServer:
+    env:
+        - name: HELM_PLUGINS
+          value: /custom-tools/helm-plugins/
+        - name: HELM_SECRETS_CURL_PATH
+          value: /custom-tools/curl
+        - name: HELM_SECRETS_SOPS_PATH
+          value: /custom-tools/sops
+        - name: HELM_SECRETS_VALS_PATH
+          value: /custom-tools/vals
+        - name: HELM_SECRETS_KUBECTL_PATH
+          value: /custom-tools/kubectl
+        - name: HELM_SECRETS_BACKEND
+          value: sops
+        # https://github.com/jkroepke/helm-secrets/wiki/Security-in-shared-environments
+        - name: HELM_SECRETS_VALUES_ALLOW_SYMLINKS
+          value: "false"
+        - name: HELM_SECRETS_VALUES_ALLOW_ABSOLUTE_PATH
+          value: "true"
+        - name: HELM_SECRETS_VALUES_ALLOW_PATH_TRAVERSAL
+          value: "false"
+        - name: HELM_SECRETS_WRAPPER_ENABLED
+          value: "true"
+        - name: HELM_SECRETS_DECRYPT_SECRETS_IN_TMP_DIR
+          value: "true"
+        - name: HELM_SECRETS_HELM_PATH
+          value: /usr/local/bin/helm
+        - name: SOPS_AGE_KEY_FILE
+          # Multiple keys can be separated by space
+          value: /helm-secrets-private-keys/key.txt
+    volumes:
+        - name: custom-tools
+          emptyDir: {}
+        # kubectl create secret generic helm-secrets-private-keys --from-file=key.asc=assets/gpg/private2.gpg
+        - name: helm-secrets-private-keys
+          secret:
+            secretName: helm-secrets-private-keys
+    volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
+        - mountPath: /usr/local/sbin/helm
+          subPath: helm
+          name: custom-tools
+        - mountPath: /helm-secrets-private-keys/
+          name: helm-secrets-private-keys
+    initContainers:
+        - name: download-tools
+          image: alpine:latest
+          imagePullPolicy: IfNotPresent
+          command:
+            - sh
+            - -ec
+          env:
+            - name: HELM_SECRETS_VERSION
+              value: 4.6.0
+            - name: KUBECTL_VERSION
+              value: 1.30.1
+            - name: VALS_VERSION
+              value: 0.37.1
+            - name: SOPS_VERSION
+              value: 3.8.1
+          args:
+            - |
+              mkdir -p /custom-tools/helm-plugins
+              wget -qO- https://github.com/jkroepke/helm-secrets/releases/download/v${HELM_SECRETS_VERSION}/helm-secrets.tar.gz | tar -C /custom-tools/helm-plugins -xzf-;
+
+              wget -qO /custom-tools/curl https://github.com/moparisthebest/static-curl/releases/latest/download/curl-amd64
+              wget -qO /custom-tools/sops https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.amd64
+              wget -qO /custom-tools/kubectl https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl
+
+              wget -qO- https://github.com/helmfile/vals/releases/download/v${VALS_VERSION}/vals_${VALS_VERSION}_linux_amd64.tar.gz | tar -xzf- -C /custom-tools/ vals;
+
+              cp /custom-tools/helm-plugins/helm-secrets/scripts/wrapper/helm.sh /custom-tools/helm
+
+              chmod +x /custom-tools/*
+          volumeMounts:
+            - mountPath: /custom-tools
+              name: custom-tools
 sops:
     kms: []
     gcp_kms: []
@@ -13,14 +100,14 @@ sops:
         - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrb1FRdXBscTByYjQrSUV1
-            S1RNWW54OFExY3ZUaXo0c1M3R0hONEhxNmt3CjE0bTJKMjJuQlJTaUx2Sm9ORllW
-            blBPWWU4YlB1aVNpRmUzSUJzNWU3SVUKLS0tIEJNck9wYk1qUjF6aWNVd1VmNVBM
-            R3puWDBaRXh6TGJBR3hCNzJuQUZmR28Kr9ABEmR0VcF44i+cpWdgYerSO+WuG4SC
-            xpPuRHOG/0Mc2ya8J+fBD+gcPPx0dP6mdninCIjiMGKY54nz4RqeSA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBQ2FSQktrdE11N0JEZXNT
+            cytjdFdnMFF6eXVtdzRHWVZ3YzAwbXFMY0UwCis1NFdWRWo1MGs3cEpVbmQ3c2Zz
+            VloxbGtCdHpCdjBHQWgvc3pPL1BxWHcKLS0tIGhDNTBBWS8zMzBET0tPWUhkaDR1
+            c2ZJdStWUDZEdjRsaU5maWd6WVBaQTQK/RO/hj7SU+tzARbjZTOZlRhcBCIAGC1U
+            8+fXtklLUxvlOrlCyhH5csTNtn3Q/Vw2opQe8ca9ZSyjCf7+AEFJMQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-05T05:09:12Z"
-    mac: ENC[AES256_GCM,data:xee2fT8ndFFXrtTJ7B2OOH7KgjB3gtUzRNcdLEGWEeJD+o5u37CPeIahAUkqSB0oAAnercEw3V300lVX7ZtFDC/WTouigguMIjwwbxrlkhFY4h7FRyj1pUmTruM+d1kwiGhs4FeDuHnnae9DasuFfPqJeEk+eJJIfdyNZBo2dxI=,iv:M8iUBPQMKKT3Yd6ZqFtH2EzhHa1qK2aOtQZKTZ9fRY8=,tag:6uH7tedv0iikIfkQGLDfdw==,type:str]
+    lastmodified: "2024-07-05T05:14:35Z"
+    mac: ENC[AES256_GCM,data:8qmXdda2As/mI2BhYIeCqYLgxCUiCiH2oHFvUWdVX5d14bBlWy95NBuZ5UWnUC3I3H60wlz0KfUKcG87ZDRRODJsv/einRyZcr72UCPMK4U4ibhuIsAwxOtyRMS60H8aZMyQdLUYj/uZfdpyShWzV1glIGYFBiDO9314ErpXYVU=,iv:8OmPQHwS81W3Tfp+3pjQGFAqsCZzDqCtQudJ1cjF/DA=,tag:QkSKjk3tNQRy/RSoDFluPg==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.0

@@ -1,9 +1,49 @@
+# Enable Kustomize Alpha Plugins via Argo CD ConfigMap, required for ksops
 global:
     domain: argocd.ajaykumar.ie
 configs:
+    params:
+        server.insecure: true
+    cm:
+        statusbadge.enabled: null
+        kustomize.buildOptions: --enable-alpha-plugins --enable-exec
     secret:
         argocdServerAdminPassword: $2a$10$VS18cczTtbUep4iBCs0FdORY9tWiBZ/ew4m62ciotMBWrWeyC.JNO
         githubSecret: bd77b8ded03b9fdc259013f221d5c244
+repoServer:
+    env:
+        - name: XDG_CONFIG_HOME
+          value: /.config
+        - name: SOPS_AGE_KEY_FILE
+          value: /.config/sops/age/keys.txt
+    # Use init containers to configure custom tooling
+    # https://argoproj.github.io/argo-cd/operator-manual/custom_tools/
+    volumes:
+        - name: custom-tools
+          emptyDir: {}
+        - name: sops-age
+          secret:
+            secretName: sops-age
+    initContainers:
+        - name: install-ksops
+          image: viaductoss/ksops:v4.3.2
+          command:
+            - /bin/sh
+            - -c
+          args:
+            - echo "Installing KSOPS..."; mv ksops /custom-tools/; mv kustomize /custom-tools/; echo "Done.";
+          volumeMounts:
+            - mountPath: /custom-tools
+              name: custom-tools
+    volumeMounts:
+        - mountPath: /usr/local/bin/kustomize
+          name: custom-tools
+          subPath: kustomize
+        - mountPath: /usr/local/bin/ksops
+          name: custom-tools
+          subPath: ksops
+        - mountPath: /.config/sops/age
+          name: sops-age
 sops:
     kms: []
     gcp_kms: []
@@ -13,14 +53,14 @@ sops:
         - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBHNU4xOWYrN09YRkdZODRm
-            OEtPb3ZtbHBqNEJNS0VNZmVGbnNnaWJqYWxFCnRCWUxieFRlTU9SL1BCRGJMREtx
-            Ni9ra1pwRmRGOWN6aXZPR0lFM2lTdVEKLS0tIHFZYTdybDlaRFBtSmFxaktKVXVo
-            L29iSWUxQlN3NnNsRHF3Tm5jc0JTWW8Ku7nXgMAyBnFeb3Xf/tWJ+SeMsIh9n0Sg
-            vo6UbmRATDqAZ58c6QKtJLXeA89Is1bAQiQxGKZ3B35o7O15nqoI7w==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBjd3pacVVZd2kxVFVrdENS
+            ZnYweStKWDU5YWZ6OHVraEdDV2J0K1IrZ2dNCnlqZHNHc01nS1pyaDBvbTRhZGl2
+            UFdHOEdVZHF2ekxleFl3UU1PNE5XZE0KLS0tIEg5bjNXbGFzeHpXSDVhTmhkWmNz
+            WjdGaWVUU3VDZ3VEajZHSG8wZlVDYjgK0EI0U+8NQAhF1ecxKtSLBlByyWjEyToj
+            eXMrSpiwWcAT9Dkm0T3hUF4AJ+SpKyIrjv5V0YU1kd/xSL3ZaMT4vw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-05T05:32:41Z"
-    mac: ENC[AES256_GCM,data:aQn/zJztZTaTfrcaHX91SR9UfKRbOf39yuXl3csayQ4qE0dAjYrsgBpYK80Rdb6qKG/oXuVhIPm+GO77AHhzjgBOgPiMqPMh0Nukgg0jLTNqckY06fEWRvZDFkVmnu+GkhHlQk4r90rO8tClwKQmQPmkzLWXmST0yXORXMlxqJI=,iv:sblbdFXJafJrV7MI+y2eWku2WIP9lSwwR3x9JQEV1xA=,tag:MFoBwsWF2OcuEsc81hRugQ==,type:str]
+    lastmodified: "2024-07-05T06:51:35Z"
+    mac: ENC[AES256_GCM,data:kPTb7yb7CQM0Vw/yqDVaSXxzyf3I1NHNlneDvkZ7Xyf8vYXYEcGTtKik6rUv/RWM7OMaALCLW05QF8IhVqh2ElNxDSrsUo1iVnh4BVWf+u9EbSLUA5G3bOHkPjR18GOk6VB21O101CHIY9gs+usOg3OjzS6VzP0ePa8xPB4hJgg=,iv:5vVSL03c3xwL6mZ/ilsr0Hi1L9lhDr1z2xzNznbX/sU=,tag:Tf9ooJllTgQm2r71g5iyDg==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.0

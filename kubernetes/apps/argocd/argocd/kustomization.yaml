@@ -14,3 +14,5 @@ helmCharts:
   valuesFile: values.sops.yaml
   includeCRDs: true
 
+resources:
+  - namespace.yaml

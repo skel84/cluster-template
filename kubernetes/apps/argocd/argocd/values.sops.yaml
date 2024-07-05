@@ -1,49 +1,49 @@
-# Enable Kustomize Alpha Plugins via Argo CD ConfigMap, required for ksops
+#ENC[AES256_GCM,data:G4oAx5PCfthi0G36mRuJHI70WCLv1E42HxsiyOtl/3qzSBti6nEuL2Pe8N+CWbMmWuJINkMDnFs1i2nTstZcjwr7McZlSDo9Vg==,iv:FXGTmNlIw0xx7S7QEmFpnNXwTVJ7jV9qlg+q0nKYHiw=,tag:qlo1mDVrXy5qHOWA8m2kiw==,type:comment]
 global:
-    domain: argocd.ajaykumar.ie
+    domain: ENC[AES256_GCM,data:hZys/uCMQpfvjbnVHLOV+clDsA==,iv:ke+DipjIKwRnRNc1ROuJyJFuHDC17xSsrAU7pXHLKuA=,tag:DXwLYyFqilmjEzs0Y236Ww==,type:str]
 configs:
     params:
-        server.insecure: true
+        server.insecure: ENC[AES256_GCM,data:Z55QLQ==,iv:TZl2gPTysvJyuNyA7jUuTZG5XhO1Gn5R/9tXOrm2jOM=,tag:QPRnZDtvOohJav9wIkZ8iA==,type:bool]
     cm:
         statusbadge.enabled: null
-        kustomize.buildOptions: --enable-alpha-plugins --enable-exec
+        kustomize.buildOptions: ENC[AES256_GCM,data:Vg9/e27W0sgfyt0bfGWvfiPQzUM6GnNNUG7hIDn+Wb1mp9wm,iv:o53uxBukB4rOaZofagTCUzCNt0/p+41++tN4XlVyG7Y=,tag:UYIvaEjT9OaWrHSzxc1bjg==,type:str]
     secret:
-        argocdServerAdminPassword: $2a$10$VS18cczTtbUep4iBCs0FdORY9tWiBZ/ew4m62ciotMBWrWeyC.JNO
-        githubSecret: bd77b8ded03b9fdc259013f221d5c244
+        argocdServerAdminPassword: ENC[AES256_GCM,data:hqRFCXE4k+p3L5NPqSmEwqXZg0nNd/Ohez10YT8R2Pvof0GZdTcMNSFdRTlvhURtnhBLGDl9CVVbIEII,iv:o5dumtU7Z1nxiT7oJSUAhqzDvlSt+vo+I3KemyrlwC0=,tag:B5K+xKC2L6Fm90fUA5WH3A==,type:str]
+        githubSecret: ENC[AES256_GCM,data:9fdA7ghFWI5jMGHtwwBpBq9qpRuJedH5jMQIIvSJuoc=,iv:h0Eah7nC2puRL1SmqoYlfujQrXGPD72ktaQxmR+pv9Y=,tag:ftIgPBkhvgnepa2k7nqF5Q==,type:str]
 repoServer:
     env:
-        - name: XDG_CONFIG_HOME
-          value: /.config
-        - name: SOPS_AGE_KEY_FILE
-          value: /.config/sops/age/keys.txt
-    # Use init containers to configure custom tooling
-    # https://argoproj.github.io/argo-cd/operator-manual/custom_tools/
+        - name: ENC[AES256_GCM,data:KiHejz1sNjPiPF6ZvhzU,iv:tFGw1itW2DO7Sx209VJi2rbTfpFM2dlBQqEI4tW1l18=,tag:vzBpJC2Qf+h2i+0EKsS1+w==,type:str]
+          value: ENC[AES256_GCM,data:jsP8Ty5rEMI=,iv:jemCsDi9Eov5tXJuMPHfGjr4xGjRrMgSw/sSxxwtpxc=,tag:umfCtbfiZtWLGn3HqHg+dA==,type:str]
+        - name: ENC[AES256_GCM,data:FyAMUs0tTxzgLPUV7U5+pXA=,iv:tzVltsRqJWYiJW2TujI01CfrdcBSQCYYeTLuxZ8e2lw=,tag:5r4yJb+C/xZy7gr7EsQsVQ==,type:str]
+          value: ENC[AES256_GCM,data:rp8lW9MN17jSnPmiYFN/tHHzX+rp+ZpZo/U=,iv:5SgkQkEiamed0NJbMo+4Se7ay/AzBVVYsjLuGkkPJB0=,tag:JOiAGYycbK3YLGDOM2Tm2Q==,type:str]
+    #ENC[AES256_GCM,data:tq0C+J/8dTSEiEV8IhSpCXYAk79rHvmMQUc+PZxzW1Beepk00/P1aqJk85ryRS/X,iv:3RB5lpwhIv/H1l6k6w2neIa2hKUWfQVW4HnrRPQ0g2c=,tag:NriKpGHg+jZBZIHoS78+pg==,type:comment]
+    #ENC[AES256_GCM,data:UX7xgEftKWXfzjHyMOY6bTFwdV8lNMx1KUFXjT3+bi3OOiDoeU1wdcW0LEsX+zFFCGLDo3QlySk9HAHAEdP7oSc=,iv:mO/Opt3aGI9f/8rlyHeIEZQmR9QJyw0os6lHVnmcMB0=,tag:GvFM6RfPICW4hnC5LSMBIA==,type:comment]
     volumes:
-        - name: custom-tools
+        - name: ENC[AES256_GCM,data:leAmHUS40jZ+703q,iv:mSw1bP6hRR2oEn4ytP3lVFO70QuSgX7TfLWsdp38nCs=,tag:KU0qslxyE1fAzotohHFmeQ==,type:str]
           emptyDir: {}
-        - name: sops-age
+        - name: ENC[AES256_GCM,data:51br+J4xAtE=,iv:Y6qBBCVg0am0I/IUS2oJY7MsSp9YFQzLrdnHhw6Ldck=,tag:pbwt8pC6B90pevirhLIdPQ==,type:str]
           secret:
-            secretName: sops-age
+            secretName: ENC[AES256_GCM,data:w0N3NuKpWeA=,iv:cl6Vb/L7JDpdFQk373J4Sp1z7y6msHyyDhEvO9DS3qY=,tag:UpWI2OsJf0b++jugix6k9g==,type:str]
     initContainers:
-        - name: install-ksops
-          image: viaductoss/ksops:v4.3.2
+        - name: ENC[AES256_GCM,data:3Yj+9Hcjf0xYhpRLcg==,iv:B+Mm/j4oKYX9pQn7nxAjTTNqv7nWDgm9Sgq+TqNp20I=,tag:jPFzonJ2axSINJL5Kwf2JA==,type:str]
+          image: ENC[AES256_GCM,data:aIaLA5cVbSHZiL47Gx8COP6Hzwi3JOQ=,iv:dzrR6lguttAkdM2rnL8X2tx85SXkRPS/eK+jFMv3F3o=,tag:C31Nj16qcw+fSkwtKYD2hQ==,type:str]
           command:
-            - /bin/sh
-            - -c
+            - ENC[AES256_GCM,data:H6llOKxdRA==,iv:1Krs3lSZlWSsyAeZyIvw8tk5nRdh0mInFr5hQldn++w=,tag:sprWX0jyldxfvJ6CfnCFOQ==,type:str]
+            - ENC[AES256_GCM,data:FaM=,iv:djpllEpsrbW6fH9D7oZtHHNQ++tKqjhgLeM/+pJYn7E=,tag:5yfdEAhrBTsUFQX6hXrb4w==,type:str]
           args:
-            - echo "Installing KSOPS..."; mv ksops /custom-tools/; mv kustomize /custom-tools/; echo "Done.";
+            - ENC[AES256_GCM,data:omW9tskyqf8RV2/EGL/8Dc3Uo4oScSZ6Q0B3acNhJy0YKBCLITSORtLzDgmpSPlgQHlE9jLZqo31zcsjua7yeljKNYVftW3zGYLz59u+ndrsIEOBtprscv2NVic8qbA=,iv:q/GJ5xDvu7f4WNu7T9hKpmebZ9zKo6Dl4doWO/ZUUKs=,tag:dn3Ncyozfw0rG2601xBQMQ==,type:str]
           volumeMounts:
-            - mountPath: /custom-tools
-              name: custom-tools
+            - mountPath: ENC[AES256_GCM,data:BHWJ1B2Hyq7FguWcZA==,iv:P8tAUKcnQQYC8ktCT55zVnqYdygI4bTEyGVID/K+avE=,tag:GhfFbPOxfaia2gJ1rmopCA==,type:str]
+              name: ENC[AES256_GCM,data:nyZ7IDYNbNfl5PA0,iv:tWAiH6OUksUxDcHrmNpBWFL12ycTA+vDG7g02zmswSk=,tag:ej32w9xEWQ6w42xEJboGGQ==,type:str]
     volumeMounts:
-        - mountPath: /usr/local/bin/kustomize
-          name: custom-tools
-          subPath: kustomize
-        - mountPath: /usr/local/bin/ksops
-          name: custom-tools
-          subPath: ksops
-        - mountPath: /.config/sops/age
-          name: sops-age
+        - mountPath: ENC[AES256_GCM,data:gsaj4f9Vs2aD+qQT2qTp5d6OX9ksl36U,iv:uBNY1BDURDqm66KevOd4qj7qculG0cVa/LuNiGq6oXI=,tag:NGT7MPeb1XVrC7xiOI5f0Q==,type:str]
+          name: ENC[AES256_GCM,data:1hi0OZ7P1tlfwIaM,iv:GoufxUPIvDF8ZGUugJPp5wBkXefpZxwNkK+tEGAjic4=,tag:YVMMKNpF2now6yEc8tNkwg==,type:str]
+          subPath: ENC[AES256_GCM,data:sCiNaclPRJsr,iv:ZxLmVdt4zlFiMsQY9HZ7v3nOAvL9yfHA9kma/5uWr90=,tag:DB4HxC/ccI7ODehuEYUMMg==,type:str]
+        - mountPath: ENC[AES256_GCM,data:I4yPrOEwOjS+bs0dfumNrlU2WrE=,iv:gmJz7maq4cXQzl5NfuMgaJlZ4nUqfx8edZ5KdA+zJXw=,tag:eXI8Sj0Ucg2Ol6m6dzjVuQ==,type:str]
+          name: ENC[AES256_GCM,data:LAYIfLbE/g7gjb2Z,iv:joLmu3wsXhw+ipHJiOGLGkA0SZsW1i7EpgN7eMHV+CI=,tag:VczSBiXDFv3QSKUZAIbwsw==,type:str]
+          subPath: ENC[AES256_GCM,data:tim33Aw=,iv:DMLtZTwTG036j1AW50CnhbR8bH6ejdAQEHSsHJ5CGSw=,tag:lBApjxvaKYKKDK5tNLD3Tw==,type:str]
+        - mountPath: ENC[AES256_GCM,data:aS3ATP4MURKxvv0hOxmCWs4=,iv:iTe34MdJ/UGdXMxoQ7O9LIgFZAV3dfsPVHoht+1TT/Y=,tag:DuJwFYehKDHzjULuiL6BJg==,type:str]
+          name: ENC[AES256_GCM,data:0/UV3Mg/s/4=,iv:iUJ6HPxLR3mWho0Td0NdGqdGhVrS3bMeIWdOZqaohUE=,tag:9O/YnC9iyzS59SmIv57fwQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -53,14 +53,14 @@ sops:
         - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCbytEYlpMenA0YVBiWDFD
-            VXl0T3E3bXV6OVJMbmFkRENCSmxyU0diWGpzCjRnay85aXJNaGNiVmF1R2ZmR0R1
-            YkVHSWJXL2YzekpJb1VnLzVqTkd4TDgKLS0tIFhZcy9tR1V5NnQvWEtGZkQvK0JF
-            WTAyalErNjh0ZnczUGJzQlJmK2RIUncKL4uqvQej/LyFoB7PWiFXANdqVzMTWlal
-            yuPvnKVkTluTu6SN3hMCL/cKuXBMHJt56/9cjAc03OvBEtEGV926zg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBEYnUzMklDc1duczdHT21r
+            R3JqYnA2dXN3eHJPR25mUWdWYzkxR3RNdXlnCnQxRmJpMGFhdFlFQ3Bxa09DTzFt
+            Y0RNRnlwVEo4ZzVnWnBYR1Zzd2JldGMKLS0tIHY0TDlXQmxWSkZzanE5Wmo5WkN1
+            eUliUFR5WlY3eFFPODFXQTZtc1BIdHcKKfwNXXVEWWWq8cwE1BVHQA99oP8kMkXA
+            DU7v2i4+vR17w3K2NBURQ3i2+aZb48Z4627XuXYBTcn3OTHy7w1/kQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-05T08:45:15Z"
-    mac: ENC[AES256_GCM,data:BE1/5McQcosH+I0QmvUkXf2jrSZnv6G/+FqZcSUm2wF2Twwv9lO7Xr/HEm9uMDfuY4l4Bd/vbL112VFoYEM6WO+EsF0VVvEGNlC+6wWW60eHMI+N6Lx6G23UTnTOLf1KbdheSl4I1tOohAICvxLZaYzfaK1rHoeY/8M4NHAxwLA=,iv:PO+WpTnRMw9oOwbajW6tYJs1gpxuz7OUBQeHdnt8Yic=,tag:CA547048yTYBXeJPYCPNGg==,type:str]
+    lastmodified: "2024-07-05T08:52:52Z"
+    mac: ENC[AES256_GCM,data:7XUuXsRKIzwCfReiS6zu6s0iDwpHlypnL962OCayrH3HGH6M8Y8rHVHDNKvWvJFA6zSiW5WHmL6hKjfl/lyOhg6ZdEaHn/pRE/tJ61+yNjI7Y2d46QSomEszUEwZPbJxU7jssVNlkVFvLLuXtk1YrXTxjafXyCFUXaxp9BUFT2w=,iv:dTMn2EQyNCTiGk8Lcw3zpugEhMbCJVWg8Q+i0SsHijk=,tag:968ZDPL0u3gnd0hx0AcHRQ==,type:str]
     pgp: []
-    encrypted_regex: ^(data|stringData)$
+    unencrypted_suffix: _unencrypted
     version: 3.9.0

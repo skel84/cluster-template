@@ -1,24 +1,24 @@
 global:
-    domain: argocd.ajaykumar.ie
+    domain: ENC[AES256_GCM,data:v+lt3qgVHTf9tojQ+srxV4eREA==,iv:LltyyCUQf2hWRr6oMW2Sxffxguus0l1uKcAKnRM3PhA=,tag:Q8eeH2Rc8+aSajazwDnDAA==,type:str]
 configs:
     secret:
-        argocdServerAdminPassword: $2a$10$VS18cczTtbUep4iBCs0FdORY9tWiBZ/ew4m62ciotMBWrWeyC.JNO
-        githubSecret: bd77b8ded03b9fdc259013f221d5c244
+        argocdServerAdminPassword: ENC[AES256_GCM,data:Cw1uMgIzE3YR2EuzMpQLRPwL7Y88ithKu6RWivCnb7d+hwdeOOUDJtUQ7yc9pDzEsw+qz9NhlJ+rHSLZ,iv:PUP7LUGT0fXkpFUKFUd2YZWn+xretXMbT6nVdfbwkGU=,tag:pJtql/6+GT5X2Yo2cTb55w==,type:str]
+        githubSecret: ENC[AES256_GCM,data:/euQzP/zu6kakkR2wuNUgTRJA/oidwlq0qrNrIyctpM=,iv:pgIaayjD+NYX7URGZI/KtTHDJCGtzDp16yhbUD8gVUc=,tag:J515+VHeVQGcKB9J1c2BGA==,type:str]
 server:
     certificate:
-        enabled: true
-        secretName: argocd-server-tls
-        domain: argocd.ajaykumar.ie
+        enabled: ENC[AES256_GCM,data:36oGFA==,iv:wTvWWM8FSuSLZkF9kko0XR77RB/RzCGQYad6Nzsuy/8=,tag:Qfjo7J+KurahCcUm8tIPBg==,type:bool]
+        secretName: ENC[AES256_GCM,data:HB5tJrifdbfXy+HeQ+Q1ibw=,iv:UTl0mgQqmy7M2tGle/MbtVQxPmcRSMD6Wx66uwzrnI0=,tag:24TCzwH+aZlgk2DqiidQPg==,type:str]
+        domain: ENC[AES256_GCM,data:OXv6T4YCAAkolKMpqmT/HFYrNA==,iv:5SK9HyPxd7IAvqXpFxg7Kuyf2KUWiEIYfN90AbEvFlQ=,tag:d4/v5BMUorvwg1YsFCS2Sg==,type:str]
         issuer:
-            group: cert-manager.io
-            kind: ClusterIssuer
-            name: letsencrypt-staging
+            group: ENC[AES256_GCM,data:ytDyECCZaU1+n91UxdOy,iv:iIjObqZcXA9TR827/QHS75iSZJ97Z0mjWfA4zl0k8Og=,tag:iAbCjItAgTOTj52wxfg3kQ==,type:str]
+            kind: ENC[AES256_GCM,data:ole/WBtOYW14zjccrg==,iv:hTpXAMsBEytOeaonA//9Sw9zXuf1VDQESx3T4dosrmk=,tag:UKnFutv/cAi11PLm3dif1A==,type:str]
+            name: ENC[AES256_GCM,data:0vFmGn0IONsyhsGTn0c64YuZ9w==,iv:Ehzt5CpBww8eN7y06txI8x23PC0r9x8BgoA+aVuEtA8=,tag:ki4NnOBjj3gI6zmtFvnKmw==,type:str]
     ingress:
-        enabled: true
-        ingressClassName: external
+        enabled: ENC[AES256_GCM,data:j7EqJQ==,iv:uuMvg68jwu8NR89zfndyeASNAketRSQR6SfqnLA5Xqk=,tag:NBStQ9h0UwZ+XQild+UCyg==,type:bool]
+        ingressClassName: ENC[AES256_GCM,data:rsZZsIomlfU=,iv:oiHVkpa2sepvAc/SAHmhjesHJ9/nJ2NIpucoVyhMJn4=,tag:yCGfiqSVuSVbhSGwqrBSWw==,type:str]
         annotations:
-            external-dns.alpha.kubernetes.io/target: external.ajaykumar.ie
-        hostname: argocd.ajaykumar.ie
+            external-dns.alpha.kubernetes.io/target: ENC[AES256_GCM,data:idrg5oJi/+dtiepXynAn03MF7CkC,iv:KX1nf9XZEyllf6RFkra7I9UqZaEwefZkTI0Wlheb5ws=,tag:40zKGdwOEpeIY1NbPbfo4w==,type:str]
+        hostname: ENC[AES256_GCM,data:QDnaF/8jVfR8fA2hCs8JjDK8+A==,iv:lyovluzopR1gVkvRQFX4FRX0u1t7498KPL6Rckk+jjs=,tag:Eu0uEAxjcAYfXw4Bi/fYOA==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -28,14 +28,14 @@ sops:
         - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB2SHkwa25ZSDJLZHFGK2tY
-            T3pWM25Ycy9zNHJhSm1KMHhiMHR4K01iam5FCmk4azcrdnd4d3NjbGc2RmdwVktB
-            Uk4yK1RVM2FHWTNrMDIzUmlrNDhaYUEKLS0tIEl6SVRvMWpPMVlZbTYzZzZQL3Q4
-            V2JLQk4zY2V1ZUtwS3F2NkdKSWJVWmcKBQt1KQFo0z2ognGKYXBWy23rtyowIWrI
-            wdnISS6AR5ESHljXPsLxbkWPKiJnlV7mE/wWAWtqgj05BX5Rv7gZ7w==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA0ajkxOFpLRm1wWWpFRXdO
+            bC80SURTR2E1KzQ4ZnpJUThNbWdTRXAzK3dBCjNpbDNoS1pNQmczSm05b29LR2dZ
+            QjcrYlA3anpXV293YXZZaEh4MFFGZDAKLS0tIHI2L1pRZ1J3VHdtNVlxMG85YnY4
+            SGJ4MXhmYnZtbG1Fb2VUZDBySVRMUUEKeWwlhmWy2rUu/yohxUJqyBCYAVEniQOX
+            oylQ2HVTI1TnigefkhSsP91VtH0b24Hxkub6dHYDuAw3q56tpyk6qw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-05T08:45:15Z"
-    mac: ENC[AES256_GCM,data:j0rsinD/PE63SIP9i+Nq7F3W4yBSyAufg0GVtSHGLF6/WaPKstYLp89KlizXYOzDJHrodbDrdj6jqSNs/11Mmczbn2fXc6qL75F7RJtBnyipaURtcAGcwTTfc8vkIiu40yg0D71N2PDWVclkWm2K6ji+zKUWdwIup4gnQisjVBg=,iv:fXVBoKUPvtTzBlr4O2LPgt5l5r/iTczy3yDoyTyZLMQ=,tag:sKR7pEEEZp/8gunBpcVZ2g==,type:str]
+    lastmodified: "2024-07-05T08:52:52Z"
+    mac: ENC[AES256_GCM,data:+oCS3MSLrh/k2R7Cr7WHAr9BYTsNOnlTh1Xgi3X0rZ0cDDSaBRiK3qbc7bNpeRyfPp5fgEbxxqC6fhfIeVmIqe8KCqZ9IxdjgagcAoezSmwVKXgAaKoqWrvBg22mJyUmGXC4sOXLeWNYB9ms1WibNYxBU/qeIX/0F6rTsy3MN0k=,iv:IeTsNSAnPTxD0szb2pZ2M4Ox85MlnDb/gJL2LGaIN2w=,tag:qVd5WFGsEuPH47e6b9kquA==,type:str]
     pgp: []
-    encrypted_regex: ^(data|stringData)$
+    unencrypted_suffix: _unencrypted
     version: 3.9.0

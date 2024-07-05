@@ -1,5 +1,7 @@
 crds:
   install: true
+global:
+  domain: "argocd.#{ bootstrap_cloudflare.domain }#"
 configs:
   params:
     server.insecure: true
@@ -17,6 +19,9 @@ configs:
           - CiliumIdentity
         clusters:
           - "*"
+  secret:
+    argocdServerAdminPassword: #{ bootstrap_argocd_admin_password }#
+    githubSecret: #{ bootstrap_github_webhook_token }#
 controller:
   metrics:
     enabled: true
@@ -36,6 +41,24 @@ redis:
     serviceMonitor: *service-monitor
 server:
   allowAnyNamespace: true
+  certificate:
+    enabled: true
+    secretName: argocd-server-tls
+    domain:  "argocd.#{ bootstrap_cloudflare.domain }#"
+    issuer:
+      group: cert-manager.io
+      kind: ClusterIssuer
+      #% if bootstrap_cloudflare.acme.production %#
+      name: letsencrypt-production
+      #% else %#
+      name: letsencrypt-staging
+      #% endif %#
+  ingress:
+    enabled: true
+    ingressClassName: external
+    annotations:
+      external-dns.alpha.kubernetes.io/target: "external.#{ bootstrap_cloudflare.domain }#"
+    hostname: "argocd.#{ bootstrap_cloudflare.domain }#"
   metrics:
     enabled: true
     serviceMonitor: *service-monitor

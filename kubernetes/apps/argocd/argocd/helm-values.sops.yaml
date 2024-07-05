@@ -1,25 +1,24 @@
-argo-cd:
-    global:
+global:
+    domain: argocd.ajaykumar.ie
+configs:
+    secret:
+        argocdServerAdminPassword: $2a$10$VS18cczTtbUep4iBCs0FdORY9tWiBZ/ew4m62ciotMBWrWeyC.JNO
+        githubSecret: bd77b8ded03b9fdc259013f221d5c244
+server:
+    certificate:
+        enabled: true
+        secretName: argocd-server-tls
         domain: argocd.ajaykumar.ie
-    configs:
-        secret:
-            argocdServerAdminPassword: $2a$10$VS18cczTtbUep4iBCs0FdORY9tWiBZ/ew4m62ciotMBWrWeyC.JNO
-            githubSecret: bd77b8ded03b9fdc259013f221d5c244
-    server:
-        certificate:
-            enabled: true
-            secretName: argocd-server-tls
-            domain: argocd.ajaykumar.ie
-            issuer:
-                group: cert-manager.io
-                kind: ClusterIssuer
-                name: letsencrypt-staging
-        ingress:
-            enabled: true
-            ingressClassName: external
-            annotations:
-                external-dns.alpha.kubernetes.io/target: external.ajaykumar.ie
-            hostname: argocd.ajaykumar.ie
+        issuer:
+            group: cert-manager.io
+            kind: ClusterIssuer
+            name: letsencrypt-staging
+    ingress:
+        enabled: true
+        ingressClassName: external
+        annotations:
+            external-dns.alpha.kubernetes.io/target: external.ajaykumar.ie
+        hostname: argocd.ajaykumar.ie
 sops:
     kms: []
     gcp_kms: []
@@ -29,14 +28,14 @@ sops:
         - recipient: age1kh9qxg0nplvlncvld27lg3h4f3epdsr32vuxswtxn95fyhj04ufsuq9cl6
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCVnJGd3p3c3Z2WElSUldm
-            a0xSdE43dE9DK2RKZWJoUXVGK3JndWhBWnpBCnBIcXUwTy82Q3pqSk01bmdYUDd2
-            VFZaVm5IV0o4REhjbXBZbnBwY0xLeTAKLS0tIGh6dFd2VmZLa0VSQnVjNFdGMi96
-            OGdqTkxsdXpYZnFjbmUxM1BINE14Mk0KeoY4+ZFmvdHy8M2mcvi5iMs2+Ndt7Kou
-            WroBEOIqt1WTDVv0b9GXFDYDsf3T+8mdm246/xGh+pqdcJeeEbNFxg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBkRWYwNGlpcEgwVS9MS1Nx
+            YWh5NzlZRHhsUWdDc09pVU96dE5UTEhBc1FNCkF2czNCNkxPZjNoTmt6amdPUUd3
+            WVJxZ2U4cy84Qk9sQWdsa0FBa1JZdWsKLS0tICthRWdsVnhoQThWWEROdHJwS1lD
+            ZUZIQ0NILzdmRVYzejFWUFMyL1VyZlUKJ5iEToe0mXIgeldkBoRRlPwDKMfRQveC
+            YqboeOypJ62bIElWo1rdImlx5RU9eGYpEUvNzS4LVgTyQrkF8iJGag==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-07-05T08:00:02Z"
-    mac: ENC[AES256_GCM,data:bC1+C06hVKHyIsVC/yzkzkcmGJrPqav8qpQg9pZXhTcjqvBwrZuFtAxZo++XyFmuVBBnMZYk4D35BbVnkuOLB9t0aPD3aiUbO1PL9ictPcuyzKUScenvJcOdopa9nYAExLHwGQNrldImrYuO0jezDgTLYITa45XJu8+LiD0RgLU=,iv:r7mbDqHbZMKuQmZRIqTi0ji21SrjxfqBQR3ymMb/hnQ=,tag:qZi/+0/W9d7iGEkPLjdeIQ==,type:str]
+    lastmodified: "2024-07-05T08:25:32Z"
+    mac: ENC[AES256_GCM,data:BPjxCSBp0cwzOh3AidD21TKWPQbsD3+eQw7PVTbjmuoJg2bUTP7bw7Vlrkldq5OkzzemZ06xyb5uScGVd8hrK1f43rEH9wcWb/TmGWEdIF2hcJifTY59Ha3vG5OtHyTJ24MFlpAGePBDmYvQ65XqChIlJHoIj3qr1/+WefDcFgE=,iv:qbrMHeL2/PKyST5pt5g9M0G/S0T7Yl2bFXAVyxmLS64=,tag:1JvJUXCe/A0WBvLo1xB7Rw==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.0

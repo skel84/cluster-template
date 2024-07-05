@@ -25,8 +25,8 @@ releases:
     chart: ../apps/argocd/argocd
     version: 7.3.4
     values:
-      - ../apps/argocd/argocd/helm-values.yaml
+      - ../apps/argocd/argocd/values.yaml
     secrets:
-      - ../apps/argocd/argocd/helm-values.sops.yaml
+      - ../apps/argocd/argocd/values.sops.yaml
     needs:
       - cert-manager/cert-manager

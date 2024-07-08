@@ -16,3 +16,5 @@ releases:
     version: 7.3.4
     secrets:
       - secrets.sops.yaml
+    needs:
+      - cert-manager/cert-manager

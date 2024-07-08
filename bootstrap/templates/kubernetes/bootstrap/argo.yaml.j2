@@ -24,7 +24,7 @@ releases:
     namespace: argocd
     chart: oci://ghcr.io/argoproj/argo-helm/argo-cd
     version: 7.3.4
-    secrets:
-      - ../apps/argocd/argocd/values.sops.yaml
+    values:
+      - ../apps/argocd/argocd/values.yaml
     needs:
       - cert-manager/cert-manager

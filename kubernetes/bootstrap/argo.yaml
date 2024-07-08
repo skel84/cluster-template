@@ -1,4 +1,4 @@
 ---
 helmfiles:
-  - ../apps/argocd/argocd/helmfile.yaml
   - ../apps/cert-manager/cert-manager/helmfile.yaml
+  - ../apps/argocd/argocd/helmfile.yaml

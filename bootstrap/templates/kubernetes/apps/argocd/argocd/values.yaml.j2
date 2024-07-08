@@ -122,8 +122,6 @@ repoServer:
       value: /sops-age/key.txt
     - name: AVP_TYPE
       value: sops
-    - name: PATH
-      value: $(PATH):/custom-tools
   volumes:
     - name: custom-tools
       emptyDir: {}

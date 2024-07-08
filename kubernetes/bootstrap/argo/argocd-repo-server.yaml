@@ -63,6 +63,8 @@ spec:
               value: /sops-age/key.txt
             - name: AVP_TYPE
               value: sops
+            - name: PATH
+              value: $(PATH):/custom-tools
           securityContext:
             runAsNonRoot: true
             runAsUser: 999
@@ -90,6 +92,8 @@ spec:
               value: /sops-age/key.txt
             - name: AVP_TYPE
               value: sops
+            - name: PATH
+              value: $(PATH):/custom-tools
           securityContext:
             runAsNonRoot: true
             runAsUser: 999
@@ -117,6 +121,8 @@ spec:
               value: /sops-age/key.txt
             - name: AVP_TYPE
               value: sops
+            - name: PATH
+              value: $(PATH):/custom-tools
           securityContext:
             runAsNonRoot: true
             runAsUser: 999
@@ -140,6 +146,10 @@ spec:
           env:
             - name: SOPS_AGE_KEY_FILE # For age
               value: /sops-age/key.txt
+            - name: AVP_TYPE
+              value: sops
+            - name: PATH
+              value: $(PATH):/custom-tools
           volumeMounts:
             - mountPath: /custom-tools
               name: custom-tools

@@ -122,6 +122,8 @@ repoServer:
       value: /sops-age/key.txt
     - name: AVP_TYPE
       value: sops
+    - name: PATH
+      value: $(PATH):/custom-tools
   volumes:
     - name: custom-tools
       emptyDir: {}
@@ -182,6 +184,8 @@ repoServer:
           value: /sops-age/key.txt
         - name: AVP_TYPE
           value: sops
+        - name: PATH
+          value: $(PATH):/custom-tools
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
@@ -210,6 +214,8 @@ repoServer:
           value: /sops-age/key.txt
         - name: AVP_TYPE
           value: sops
+        - name: PATH
+          value: $(PATH):/custom-tools
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
@@ -238,6 +244,8 @@ repoServer:
           value: /sops-age/key.txt
         - name: AVP_TYPE
           value: sops
+        - name: PATH
+          value: $(PATH):/custom-tools
       securityContext:
         runAsNonRoot: true
         runAsUser: 999

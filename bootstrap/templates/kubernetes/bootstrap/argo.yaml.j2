@@ -1,30 +1,4 @@
 ---
-helmDefaults:
-  wait: true
-  waitForJobs: true
-  timeout: 600
-  recreatePods: true
-  force: true
-
-repositories:
-  - name: jetstack
-    url: https://charts.jetstack.io
-
-apiVersions:
-  - monitoring.coreos.com/v1
-
-releases:
-  - name: cert-manager
-    namespace: cert-manager
-    chart: jetstack/cert-manager
-    version: v1.15.1
-    values:
-      - ../apps/cert-manager/cert-manager/values.yaml
-  - name: argocd
-    namespace: argocd
-    chart: oci://ghcr.io/argoproj/argo-helm/argo-cd
-    version: 7.3.4
-    values:
-      - ../apps/argocd/argocd/values.yaml
-    needs:
-      - cert-manager/cert-manager
+helmfiles:
+  - ../apps/argocd/argocd/helmfile.yaml
+  - ../apps/cert-manager/cert-manager/helmfile.yaml

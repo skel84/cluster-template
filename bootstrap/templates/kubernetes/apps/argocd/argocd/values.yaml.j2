@@ -19,7 +19,6 @@ configs:
     githubSecret: <path:values.sops.yaml#webhook_token>
   cmp:
     plugins:
-      --- First plugin
       avp-kustomize:
         allowConcurrency: true
         # Note: this command is run _before_ anything is done, therefore the logic is to check
@@ -37,8 +36,6 @@ configs:
             - "-c"
             - "kustomize build . | argocd-vault-plugin generate -"
         lockRepo: false
-
-      --- Second plugin
       avp-helm:
         allowConcurrency: true
         # Note: this command is run _before_ any Helm templating is done, therefore the logic is to check
@@ -60,8 +57,6 @@ configs:
               helm template $ARGOCD_APP_NAME -n $ARGOCD_APP_NAMESPACE ${ARGOCD_ENV_HELM_ARGS} . |
               argocd-vault-plugin generate -
         lockRepo: false
-
-      --- Third plugin
       avp:
         allowConcurrency: true
         discover:

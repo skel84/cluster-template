@@ -1,5 +1,7 @@
 crds:
   install: true
+global:
+  domain: argocd.<domain>
 configs:
   params:
     server.insecure: true
@@ -12,10 +14,14 @@ configs:
           - CiliumIdentity
         clusters:
           - "*"
+  secret:
+    argocdServerAdminPassword: <argocd_password>
+    githubSecret: <webhook_token>
   cmp:
     plugins:
       --- First plugin
       avp-kustomize:
+        allowConcurrency: true
         # Note: this command is run _before_ anything is done, therefore the logic is to check
         # if this looks like a Kustomize bundle
         discover:
@@ -30,9 +36,11 @@ configs:
             - sh
             - "-c"
             - "kustomize build . | argocd-vault-plugin generate -"
+        lockRepo: false
 
       --- Second plugin
       avp-helm:
+        allowConcurrency: true
         # Note: this command is run _before_ any Helm templating is done, therefore the logic is to check
         # if this looks like a Helm chart
         discover:
@@ -51,9 +59,11 @@ configs:
             - |
               helm template $ARGOCD_APP_NAME -n $ARGOCD_APP_NAMESPACE ${ARGOCD_ENV_HELM_ARGS} . |
               argocd-vault-plugin generate -
+        lockRepo: false
 
       --- Third plugin
       avp:
+        allowConcurrency: true
         discover:
           find:
             command:
@@ -65,6 +75,7 @@ configs:
             - argocd-vault-plugin
             - generate
             - "."
+        lockRepo: false
 controller:
   metrics:
     enabled: true
@@ -84,6 +95,20 @@ redis:
     serviceMonitor: *service-monitor
 server:
   allowAnyNamespace: true
+  certificate:
+    enabled: true
+    secretName: argocd-server-tls
+    domain:  argocd.<domain>
+    issuer:
+      group: cert-manager.io
+      kind: ClusterIssuer
+      name: <cert_issuer>
+  ingress:
+    enabled: true
+    ingressClassName: external
+    annotations:
+      external-dns.alpha.kubernetes.io/target: external.<domain>
+    hostname: argocd.<domain>
   metrics:
     enabled: true
     serviceMonitor: *service-monitor
@@ -95,6 +120,8 @@ repoServer:
   env:
     - name: SOPS_AGE_KEY_FILE # For age
       value: /sops-age/key.txt
+    - name: AVP_TYPE
+      value: sops
   volumes:
     - name: custom-tools
       emptyDir: {}
@@ -131,6 +158,11 @@ repoServer:
       command:
         - "/var/run/argocd/argocd-cmp-server"
       image: registry.access.redhat.com/ubi8
+      env:
+        - name: SOPS_AGE_KEY_FILE # For age
+          value: /sops-age/key.txt
+        - name: AVP_TYPE
+          value: sops
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
@@ -153,6 +185,11 @@ repoServer:
       command:
         - "/var/run/argocd/argocd-cmp-server"
       image: registry.access.redhat.com/ubi8
+      env:
+        - name: SOPS_AGE_KEY_FILE # For age
+          value: /sops-age/key.txt
+        - name: AVP_TYPE
+          value: sops
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
@@ -175,6 +212,11 @@ repoServer:
       command:
         - "/var/run/argocd/argocd-cmp-server"
       image: registry.access.redhat.com/ubi8
+      env:
+        - name: SOPS_AGE_KEY_FILE # For age
+          value: /sops-age/key.txt
+        - name: AVP_TYPE
+          value: sops
       securityContext:
         runAsNonRoot: true
         runAsUser: 999

@@ -44,6 +44,8 @@ spec:
           env:
             - name: SOPS_AGE_KEY_FILE # For age
               value: /sops-age/key.txt
+            - name: AVP_TYPE
+              value: sops
           securityContext:
             runAsNonRoot: true
             runAsUser: 999
@@ -73,6 +75,8 @@ spec:
           env:
             - name: SOPS_AGE_KEY_FILE # For age
               value: /sops-age/key.txt
+            - name: AVP_TYPE
+              value: sops
           securityContext:
             runAsNonRoot: true
             runAsUser: 999
@@ -102,6 +106,8 @@ spec:
           env:
             - name: SOPS_AGE_KEY_FILE # For age
               value: /sops-age/key.txt
+            - name: AVP_TYPE
+              value: sops
           securityContext:
             runAsNonRoot: true
             runAsUser: 999

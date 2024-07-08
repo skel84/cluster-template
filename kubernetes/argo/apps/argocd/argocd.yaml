@@ -2,23 +2,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: argocd-config
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: '3'
+    argocd.argoproj.io/sync-wave: '4'
 spec:
   project: home-kubernetes
-  sources:
-  - chart: argo-cd
-    repoURL: ghcr.io/argoproj/argo-helm
-    targetRevision: 7.3.4
-    helm:
-      valueFiles:
-      - $repo/kubernetes/apps/argocd/argocd/secrets.sops.yaml
-      releaseName: argocd
-  - repoURL: "https://github.com/ajaykumar4/home-lab-argocd.git"
+  source:
+    repoURL: "https://github.com/ajaykumar4/home-lab-argocd.git"
     path: kubernetes/apps/argocd/argocd
     targetRevision: "main"
     ref: repo

@@ -26,3 +26,38 @@ spec:
       - CreateNamespace=true
       - ServerSideApply=true
       - RespectIgnoreDifferences=true
+
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  annotations:
+    argocd.argoproj.io/sync-wave: '3'
+spec:
+  project: home-kubernetes
+  sources:
+  - chart: argo-cd
+    repoURL: ghcr.io/argoproj/argo-helm
+    targetRevision: 7.3.4
+    helm:
+      valueFiles:
+      - $repo/kubernetes/apps/argocd/argocd/secrets.sops.yaml
+      releaseName: argocd
+  - repoURL: "https://github.com/ajaykumar4/home-lab-argocd.git"
+    path: kubernetes/apps/argocd/argocd
+    targetRevision: "main"
+    ref: repo
+  destination:
+    name: in-cluster
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true

@@ -2,21 +2,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: argocd-test
   namespace: argocd
 spec:
   project: home-kubernetes
-  sources:
-    - chart: argo-cd
-      repoURL: https://argoproj.github.io/argo-helm
-      targetRevision: 7.3.4
-      helm:
-        releaseName: argocd
-        valueFiles:
-          - $values/kubernetes/apps/argocd/argocd/secrets.sops.yaml
-    - repoURL: "#{ bootstrap_github_address }#"
-      targetRevision: "#{ bootstrap_github_branch|default('main', true) }#"
-      ref: values
+  source:
+    chart: argo-cd
+    repoURL: ghcr.io/argoproj/argo-helm
+    targetRevision: 7.3.4
+    helm:
+      releaseName: argocd
+      valueFiles:
+        - secrets://secrets.sops.yaml
   destination:
     name: in-cluster
     namespace: argocd

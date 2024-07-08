@@ -65,6 +65,8 @@ spec:
             - name: custom-tools
               subPath: sops
               mountPath: /usr/local/bin/sops
+            - mountPath: /sops-age/
+              name: sops-age
         - name: avp-kustomize
           command: [/var/run/argocd/argocd-cmp-server]
           image: registry.access.redhat.com/ubi8
@@ -92,6 +94,8 @@ spec:
             - name: custom-tools
               subPath: sops
               mountPath: /usr/local/bin/sops
+            - mountPath: /sops-age/
+              name: sops-age
         - name: avp-helm
           command: [/var/run/argocd/argocd-cmp-server]
           image: registry.access.redhat.com/ubi8
@@ -119,3 +123,15 @@ spec:
             - name: custom-tools
               subPath: sops
               mountPath: /usr/local/bin/sops
+            - mountPath: /sops-age/
+              name: sops-age
+        - name: argocd-repo-server
+          env:
+            - name: SOPS_AGE_KEY_FILE # For age
+              value: /sops-age/key.txt
+          volumeMounts:
+            - mountPath: /custom-tools
+              name: custom-tools
+            - mountPath: /sops-age/
+              name: sops-age
+

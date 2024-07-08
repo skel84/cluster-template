@@ -135,7 +135,7 @@ repoServer:
       name: sops-age
   initContainers:
     - name: download-tools
-      image: alpine:latest
+      image: registry.access.redhat.com/ubi8
       imagePullPolicy: IfNotPresent
       command: [sh, -ec]
       env:

@@ -4,6 +4,8 @@ kind: AppProject
 metadata:
   name: home-kubernetes
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/hook: PreSync
 spec:
   destinations:
     - name: "*"

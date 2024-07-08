@@ -4,6 +4,8 @@ kind: Secret
 metadata:
   name: github
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/hook: PreSync
   labels:
     argocd.argoproj.io/secret-type: repository
 stringData:

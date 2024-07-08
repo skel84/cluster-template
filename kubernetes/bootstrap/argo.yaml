@@ -19,12 +19,12 @@ releases:
     chart: jetstack/cert-manager
     version: v1.15.1
     values:
-      - ../apps/cert-manager/cert-manager/helm-values.yaml
+      - ../apps/cert-manager/cert-manager/values.yaml
   - name: argocd
     namespace: argocd
     chart: oci://ghcr.io/argoproj/argo-helm/argo-cd
     version: 7.3.4
     secrets:
-      - ../apps/argocd/argocd/secrets.sops.yaml
+      - ../apps/argocd/argocd/values.sops.yaml
     needs:
       - cert-manager/cert-manager

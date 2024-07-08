@@ -16,7 +16,7 @@ spec:
     targetRevision: 7.3.4
     helm:
       valueFiles:
-      - $repo/kubernetes/apps/argocd/argocd/secrets.sops.yaml
+      - $repo/secrets.sops.yaml
       releaseName: argocd
   - repoURL: "#{ bootstrap_github_address }#"
     path: kubernetes/apps/argocd/argocd

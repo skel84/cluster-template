@@ -5,7 +5,7 @@ metadata:
   name: home-kubernetes
   namespace: argocd
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: '0'
 spec:
   destinations:
     - name: "*"

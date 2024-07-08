@@ -1,7 +1,7 @@
 crds:
   install: true
 global:
-  domain: argocd.<domain>
+  domain: argocd.<path:values.sops.yaml#domain>
 configs:
   params:
     server.insecure: true
@@ -15,8 +15,8 @@ configs:
         clusters:
           - "*"
   secret:
-    argocdServerAdminPassword: <argocd_password>
-    githubSecret: <webhook_token>
+    argocdServerAdminPassword: <path:values.sops.yaml#argocd_password>
+    githubSecret: <path:values.sops.yaml#webhook_token>
   cmp:
     plugins:
       --- First plugin
@@ -98,17 +98,17 @@ server:
   certificate:
     enabled: true
     secretName: argocd-server-tls
-    domain:  argocd.<domain>
+    domain:  argocd.<path:values.sops.yaml#domain>
     issuer:
       group: cert-manager.io
       kind: ClusterIssuer
-      name: <cert_issuer>
+      name: <path:values.sops.yaml#cert_issuer>
   ingress:
     enabled: true
     ingressClassName: external
     annotations:
-      external-dns.alpha.kubernetes.io/target: external.<domain>
-    hostname: argocd.<domain>
+      external-dns.alpha.kubernetes.io/target: external.<path:values.sops.yaml#domain>
+    hostname: argocd.<path:values.sops.yaml#domain>
   metrics:
     enabled: true
     serviceMonitor: *service-monitor

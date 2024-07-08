@@ -7,17 +7,14 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   annotations:
-    argocd.argoproj.io/sync-wave: '3'
+    argocd.argoproj.io/sync-wave: '4'
 spec:
   project: home-kubernetes
   source:
-    repoURL: ghcr.io/argoproj/argo-helm
-    chart: argo-cd
-    targetRevision: 7.3.4
-    helm:
-      releaseName: argocd
-      valueFiles:
-        - $repo/kubernetes/apps/argocd/argocd/secrets.sops.yaml
+    repoURL: "#{ bootstrap_github_address }#"
+    path: kubernetes/apps/argocd/argocd
+    targetRevision: "#{ bootstrap_github_branch|default('main', true) }#"
+    ref: repo
   destination:
     name: in-cluster
     namespace: argocd

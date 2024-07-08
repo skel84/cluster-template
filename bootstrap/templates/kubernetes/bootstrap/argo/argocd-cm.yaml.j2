@@ -57,6 +57,7 @@ data:
             argocd-vault-plugin generate -
       lockRepo: false
   avp.yaml: |
+    ---
     apiVersion: argoproj.io/v1alpha1
     kind: ConfigManagementPlugin
     metadata:
@@ -75,3 +76,4 @@ data:
           - generate
           - "."
       lockRepo: false
+

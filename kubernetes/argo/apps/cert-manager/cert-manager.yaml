@@ -9,9 +9,9 @@ metadata:
 spec:
   project: home-kubernetes
   sources:
-    - repoURL: "https://github.com/ajaykumar4/home-lab-argocd.git"
+    - repoURL: https://github.com/ajaykumar4/home-lab-argocd.git
       path: kubernetes/apps/cert-manager/cert-manager
-      targetRevision: "main"
+      targetRevision: main
       ref: repo
     - repoURL: https://charts.jetstack.io
       chart: cert-manager

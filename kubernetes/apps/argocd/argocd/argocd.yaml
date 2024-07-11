@@ -10,7 +10,7 @@ spec:
   project: home-kubernetes
   sources:
     - repoURL: https://github.com/ajaykumar4/home-lab-argocd.git
-      path: kubernetes/apps/cert-manager/cert-manager
+      path: kubernetes/apps/argocd/argocd
       targetRevision: main
       ref: repo
     - repoURL: ghcr.io/argoproj/argo-helm

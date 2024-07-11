@@ -8,14 +8,10 @@ metadata:
     argocd.argoproj.io/sync-wave: '4'
 spec:
   project: home-kubernetes
-  sources:
-    - repoURL: ghcr.io/argoproj/argo-helm
-      chart: argo-cd
-      targetRevision: 7.3.4
-      helm:
-        releaseName: argocd
-        valueFiles:
-          - secrets://git+https://github.com/ajaykumar4/home-lab-argocd@kubernetes/apps/argocd/argocd/secrets.sops.yaml?ref=main
+  source:
+    repoURL: ghcr.io/argoproj/argo-helm
+    chart: argo-cd
+    targetRevision: 7.3.4
   destination:
     name: in-cluster
     namespace: argocd

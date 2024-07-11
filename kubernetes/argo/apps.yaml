@@ -10,9 +10,8 @@ spec:
   project: default
   sources:
     - repoURL: https://github.com/ajaykumar4/home-lab-argocd.git
-      path: kubernetes/apps
+      path: kubernetes/argo/apps
       targetRevision: main
-      ref: repo
       directory:
         recurse: true
   destination:

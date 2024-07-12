@@ -14,7 +14,7 @@ spec:
       targetRevision: #{ bootstrap_github_branch|default('main', true) }#
       ref: repo
     - repoURL: https://github.com/argoproj/argo-helm.git
-      chart: charts/argo-cd
+      path: charts/argo-cd
       targetRevision: 7.3.4
       helm:
         releaseName: argocd

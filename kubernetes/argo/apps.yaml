@@ -8,12 +8,12 @@ metadata:
     argocd.argoproj.io/sync-wave: '1'
 spec:
   project: default
-  sources:
-    - repoURL: https://github.com/ajaykumar4/home-lab-argocd.git
-      path: kubernetes/apps
-      targetRevision: main
-      directory:
-        recurse: true
+  source:
+    repoURL: "https://github.com/ajaykumar4/home-lab-argocd.git"
+    path: kubernetes/apps
+    targetRevision: "main"
+    directory:
+      recurse: true
   destination:
     name: in-cluster
     namespace: argocd

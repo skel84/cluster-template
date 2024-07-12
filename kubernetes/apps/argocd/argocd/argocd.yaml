@@ -19,7 +19,7 @@ spec:
       helm:
         releaseName: argocd
         valueFiles:
-          - $repo/kubernetes/apps/argocd/argocd/secrets.sops.yaml
+          - secrets://secrets.sops.yaml
   destination:
     name: in-cluster
     namespace: argocd

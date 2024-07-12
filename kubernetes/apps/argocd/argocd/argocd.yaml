@@ -15,11 +15,11 @@ spec:
       ref: repo
     - repoURL: ghcr.io/argoproj/argo-helm
       chart: argo-cd
-      targetRevision: 7.3.4
+      targetRevision: 7.3.6
       helm:
         releaseName: argocd
         valueFiles:
-          - secrets://https://raw.githubusercontent.com/ajaykumar4/home-lab-argocd/main/kubernetes/apps/argocd/argocd/secrets.sops.yaml
+          - secrets://secrets.sops.yaml
   destination:
     name: in-cluster
     namespace: argocd

@@ -9,13 +9,17 @@ metadata:
 spec:
   project: home-kubernetes
   sources:
-    - repoURL: https://github.com/cert-manager/cert-manager.git
-      path: deploy/charts/cert-manager
+    - repoURL: https://github.com/ajaykumar4/home-lab-argocd.git
+      path: kubernetes/apps/cert-manager/cert-manager
+      targetRevision: main
+      ref: repo
+    - repoURL: https://charts.jetstack.io
+      chart: cert-manager
       targetRevision: v1.15.1
       helm:
         releaseName: cert-manager
         valueFiles:
-          - values.yaml
+          - $repo/kubernetes/apps/cert-manager/cert-manager/values.yaml
   destination:
     name: in-cluster
     namespace: cert-manager

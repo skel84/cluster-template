@@ -13,9 +13,9 @@ spec:
       path: kubernetes/apps/argocd/argocd
       targetRevision: main
       ref: repo
-    - repoURL: https://github.com/argoproj/argo-helm.git
-      path: charts/argo-cd
-      targetRevision: argo-cd-7.3.6
+    - repoURL: ghcr.io/argoproj/argo-helm
+      chart: argo-cd
+      targetRevision: 7.3.4
       helm:
         releaseName: argocd
         valueFiles:

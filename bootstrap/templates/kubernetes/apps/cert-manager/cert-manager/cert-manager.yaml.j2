@@ -9,8 +9,8 @@ metadata:
 spec:
   project: home-kubernetes
   sources:
-    - repoURL: https://charts.jetstack.io
-      chart: cert-manager
+    - repoURL: https://github.com/cert-manager/cert-manager.git
+      path: deploy/charts/cert-manager
       targetRevision: v1.15.1
       helm:
         releaseName: cert-manager

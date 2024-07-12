@@ -12,6 +12,10 @@ spec:
     repoURL: https://charts.jetstack.io
     chart: cert-manager
     targetRevision: v1.15.1
+    helm:
+      releaseName: cert-manager
+      valueFiles:
+        - values/cert-values.yaml
   destination:
     name: in-cluster
     namespace: cert-manager
